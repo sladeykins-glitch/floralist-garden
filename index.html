@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#789565">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Floralist's Garden</title>
+<style>
+:root{--ink:#29352b;--cream:#f7f1df;--leaf:#536d4d;--gold:#c59a4a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;color:var(--ink)}
+body{background:linear-gradient(#b9d7bb 0 28%,#789d70 28% 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.1;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:20px 20px}
+header{text-align:center;padding:calc(14px + env(safe-area-inset-top)) 14px 8px}
+h1{font-size:clamp(1.45rem,7vw,2.5rem);letter-spacing:.07em;margin:0;text-shadow:0 2px #fff6}
+.subtitle{font-size:.85rem;font-style:italic;opacity:.75;margin-top:3px}
+.app{width:min(700px,100%);margin:auto;padding:0 10px calc(14px + env(safe-area-inset-bottom))}
+.garden{height:min(76vh,620px);min-height:500px;position:relative;overflow:hidden;border:2px solid #8b7a55;border-radius:22px;background:linear-gradient(#cfe4c7 0 39%,#88a86d 39%);box-shadow:0 10px 30px #263a2a44}
+.garden:before{content:"";position:absolute;left:-10%;right:-10%;bottom:-16%;height:53%;background:radial-gradient(ellipse,#8a6647 0 45%,#684a35 46% 100%);border-radius:50% 50% 0 0}
+.moon{position:absolute;width:82px;height:82px;border-radius:50%;right:7%;top:7%;background:#fff3bc;box-shadow:0 0 35px #fff3bcaa}
+.label{position:absolute;top:12px;left:14px;right:14px;text-align:center;font-size:.82rem;opacity:.65;z-index:5}
+.plant{position:absolute;left:50%;bottom:22%;transform:translateX(-50%) scale(.55);font-size:7rem;z-index:4;transform-origin:bottom;filter:drop-shadow(0 7px 5px #2e392944);transition:.4s}
+.stage-0{transform:translateX(-50%) scale(.32)}.stage-1{transform:translateX(-50%) scale(.55)}
+.stage-2{transform:translateX(-50%) scale(.78)}.stage-3{transform:translateX(-50%) scale(1)}
+.clock{position:absolute;left:50%;top:48%;width:min(78vw,390px);height:min(78vw,390px);transform:translate(-50%,-50%);border-radius:50%;z-index:2}
+.segment{position:absolute;inset:0;border-radius:50%;clip-path:polygon(50% 50%,0 0,50% 0);background:#e7d9b6cc;border:3px solid #796a4e;opacity:.5;transition:.35s}
+.segment:nth-child(1){transform:rotate(0)}.segment:nth-child(2){transform:rotate(90deg)}.segment:nth-child(3){transform:rotate(180deg)}.segment:nth-child(4){transform:rotate(270deg)}
+.segment.done{background:#a9c786dd;opacity:.95}
+.clock:after{content:"";position:absolute;inset:14px;border-radius:50%;border:2px dashed #756547aa}
+.clock-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#f7f1dfed;border:3px solid #8b7a55;font-weight:bold;z-index:4}
+.soil{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);width:220px;height:60px;border-radius:50%;background:radial-gradient(ellipse,#493322,#7b573a);z-index:3;box-shadow:inset 0 10px 20px #3e2b20}
+.sparkles span{position:absolute;z-index:5;font-size:1.2rem;animation:float 2.4s ease-in-out infinite;opacity:0}
+@keyframes float{0%{transform:translateY(15px) scale(.5);opacity:0}40%{opacity:1}100%{transform:translateY(-45px) scale(1.2);opacity:0}}
+.controls{position:absolute;left:10px;right:10px;bottom:12px;z-index:8;display:flex;gap:8px}
+button{font:inherit}
+.action{flex:1;border:0;border-radius:14px;padding:15px 10px;font-weight:bold;font-size:1rem;min-height:52px;background:var(--leaf);color:white;box-shadow:0 4px 0 #394b35;touch-action:manipulation}
+.action.secondary{background:#8b7a55;box-shadow:0 4px 0 #645638}
+.action:active{transform:translateY(3px);box-shadow:0 1px 0 #394b35}
+.bottom{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:rgba(247,241,223,.94);border:2px solid #8b7a55;border-radius:17px;padding:13px;box-shadow:0 6px 20px #263a2a33}
+.card h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin:0 0 7px}
+.seed-button{width:100%;text-align:left;border:1px solid #a9956d;background:#fff9e9;padding:10px;border-radius:11px;margin:3px 0;min-height:45px;touch-action:manipulation;color:inherit}
+.seed-button.active{background:#e8efd9;border:2px solid var(--leaf)}
+.seed-button strong{display:block}.seed-button small{display:block;opacity:.65;font-size:.72rem;margin-top:2px}
+.progress{height:9px;border-radius:99px;background:#d8ccb0;overflow:hidden;margin:9px 0}
+.progress i{display:block;height:100%;width:0;background:#789565;transition:.4s}
+.result{font-size:.84rem;line-height:1.35}
+@media(max-width:430px){
+ .garden{height:70vh;min-height:480px;border-radius:18px}
+ .bottom{grid-template-columns:1fr}
+ .bottom .card:first-child{order:1}.bottom .card:last-child{order:2}
+ .plant{font-size:6rem}
+ .soil{width:190px}
+}
+</style>
+</head>
+<body>
+<header><h1>THE FLORALIST'S GARDEN</h1><div class="subtitle">A quiet place where Magiseeds awaken.</div></header>
+<main class="app">
+<section class="garden">
+<div class="label" id="seedLabel">Choose a Magiseed below</div><div class="moon"></div>
+<div class="clock"><div class="segment" id="seg1"></div><div class="segment" id="seg2"></div><div class="segment" id="seg3"></div><div class="segment" id="seg4"></div><div class="clock-center" id="clockText">0 / 4</div></div>
+<div class="soil"></div><div class="sparkles" id="sparkles"></div><div class="plant stage-0" id="plant">🌰</div>
+<div class="controls"><button class="action" id="advance">Advance Clock</button><button class="action secondary" id="reset">Reset</button></div>
+</section>
+<section class="bottom">
+<div class="card"><h2>Magiseeds</h2><div id="seedList"></div></div>
+<div class="card"><h2 id="name">Choose a seed</h2><div id="desc" class="result">Select a Magiseed to plant it in the garden.</div><div class="progress"><i id="progress"></i></div><div class="result"><strong>Growth:</strong> <span id="stageName">Unplanted</span></div><div class="result" id="result" style="margin-top:7px">Your Magiseed will grow here.</div></div>
+</section>
+</main>
+<script>
+const seeds=[
+{id:"sun",icon:"🌻",name:"Sunbloom Seed",desc:"A warm golden seed that drinks in sunlight and blooms with radiant energy.",stages:["🌰","🌱","🌿","🌻"],result:"A brilliant Sunbloom opens, filling the garden with warm golden light."},
+{id:"moon",icon:"🌙",name:"Moonpetal Seed",desc:"A pale seed that seems to contain a tiny night sky.",stages:["🌰","🌱","🌿","🌙"],result:"A Moonpetal unfolds, its petals shimmering like a quiet midnight sky."},
+{id:"ember",icon:"🔥",name:"Emberroot Seed",desc:"A dark seed with a faint red glow beneath its shell.",stages:["🌰","🌱","🌿","🔥"],result:"Emberroot blossoms with a living flame that dances without consuming the plant."},
+{id:"mystic",icon:"✨",name:"Starveil Seed",desc:"A strange seed scattered with tiny points of impossible light.",stages:["🌰","🌱","🌿","✨"],result:"Starveil blooms into a constellation of magical flowers."}
+];
+let selected=null,growth=0;
+const $=x=>document.getElementById(x);
+function renderSeeds(){$("seedList").innerHTML=seeds.map(s=>`<button class="seed-button ${selected?.id===s.id?"active":""}" data-id="${s.id}"><strong>${s.icon} ${s.name}</strong><small>${s.desc}</small></button>`).join("");document.querySelectorAll(".seed-button").forEach(b=>b.onclick=()=>selectSeed(b.dataset.id))}
+function selectSeed(id){selected=seeds.find(s=>s.id===id);growth=0;renderSeeds();update()}
+function update(){
+ if(!selected)return;
+ $("seedLabel").textContent=selected.name;$("name").textContent=selected.name;$("desc").textContent=selected.desc;
+ $("clockText").textContent=`${growth} / 4`;$("progress").style.width=growth*25+"%";
+ $("stageName").textContent=["Seed","Sprout","Growing","Blooming","Fully Grown"][growth];
+ $("plant").textContent=selected.stages[growth];$("plant").className="plant stage-"+Math.min(growth,3);
+ $("result").textContent=growth===4?selected.result:"Advance the clock to grow the Magiseed.";
+ for(let i=1;i<=4;i++)$("seg"+i).classList.toggle("done",i<=growth);
+ $("sparkles").innerHTML=growth>=2?Array.from({length:growth*2},(_,i)=>`<span style="left:${20+Math.random()*60}%;top:${25+Math.random()*45}%;animation-delay:${i*.25}s">✦</span>`).join(""):"";
+}
+$("advance").onclick=()=>{if(selected&&growth<4){growth++;update()}};$("reset").onclick=()=>{growth=0;update()};renderSeeds();
+</script>
+</body></html>
