@@ -17,14 +17,15 @@ $('saveSeed').onclick=()=>{const name=$('newName').value.trim();if(!name){alert(
 function moveSeed(x,y){const t=$('seedToken'),d=$('skullDrop').getBoundingClientRect();t.style.position='fixed';t.style.left=x+'px';t.style.top=y+'px';t.style.bottom='auto';t.style.transform='translate(-50%,-50%) rotate(-12deg)';t.classList.add('held');const inside=x>d.left&&x<d.right&&y>d.top&&y<d.bottom;$('skullDrop').classList.toggle('hot',inside);return inside}
 $('seedToken').addEventListener('pointerdown',e=>{if(activeId)return;dragging=true;pointerId=e.pointerId;$('seedToken').setPointerCapture(pointerId);moveSeed(e.clientX,e.clientY)});$('seedToken').addEventListener('pointermove',e=>{if(dragging)moveSeed(e.clientX,e.clientY)});$('seedToken').addEventListener('pointerup',e=>{if(!dragging)return;const inside=moveSeed(e.clientX,e.clientY);dragging=false;$('seedToken').releasePointerCapture(pointerId);const t=$('seedToken');t.style.position='absolute';t.style.left='30%';t.style.top='auto';t.style.bottom='22px';t.style.transform='rotate(-12deg)';t.classList.remove('held');$('skullDrop').classList.remove('hot');if(inside)plant()});$('seedToken').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();plant()}});$('skullDrop').onclick=()=>{if(!activeId&&prepared())plant()};
 function applyVisualFixes(){const s=document.createElement('style');s.textContent=`
-.skull-stage{width:min(82vw,430px)!important;height:310px!important;aspect-ratio:auto!important;bottom:-8px!important;left:42%!important}
-.skull-img{width:100%!important;height:100%!important;object-fit:contain!important;border-radius:0!important;mix-blend-mode:normal!important;opacity:1!important;-webkit-mask-image:radial-gradient(ellipse 74% 68% at 50% 52%,#000 54%,rgba(0,0,0,.96) 66%,rgba(0,0,0,.62) 76%,transparent 92%)!important;mask-image:radial-gradient(ellipse 74% 68% at 50% 52%,#000 54%,rgba(0,0,0,.96) 66%,rgba(0,0,0,.62) 76%,transparent 92%)!important;filter:drop-shadow(0 20px 22px #000b)!important}
-.hole-target{left:41%!important;top:10%!important;width:23%!important;height:23%!important}
-.plant{left:52%!important;top:-1%!important}
-.seed-token{left:30%!important;bottom:22px!important}
-.drag-label{left:18%!important;bottom:2px!important}
-@media(min-width:761px){.effects{right:2%!important;left:auto!important;top:350px!important;width:29%!important}.skull-stage{left:42%!important}}
-@media(max-width:760px){.skull-stage{left:50%!important;width:min(94vw,420px)!important;height:300px!important}.effects{left:5%!important;right:5%!important;top:690px!important;width:auto!important}.hole-target{left:41%!important;top:10%!important;width:23%!important;height:23%!important}.plant{left:52%!important;top:-1%!important}.seed-token{left:22%!important}.drag-label{left:8%!important}}
+.skull-stage{width:min(86vw,470px)!important;height:330px!important;aspect-ratio:auto!important;bottom:-16px!important;left:41%!important}
+.skull-img{width:100%!important;height:100%!important;object-fit:contain!important;border-radius:0!important;mix-blend-mode:normal!important;opacity:1!important;-webkit-mask-image:none!important;mask-image:none!important;filter:drop-shadow(0 20px 22px #000b)!important}
+.hole-target{left:43%!important;top:9%!important;width:22%!important;height:23%!important}
+.plant{left:54%!important;top:-2%!important}
+.seed-token{left:28%!important;bottom:22px!important}
+.drag-label{left:16%!important;bottom:2px!important}
+@media(min-width:761px){.clock-dock{left:28%!important;transform:translateX(-50%)!important}.effects{right:2%!important;left:auto!important;top:345px!important;width:29%!important}.skull-stage{left:41%!important}}
+@media(max-width:760px){.skull-stage{left:50%!important;width:min(96vw,450px)!important;height:315px!important}.effects{left:5%!important;right:5%!important;top:690px!important;width:auto!important}.hole-target{left:43%!important;top:9%!important;width:22%!important;height:23%!important}.plant{left:54%!important;top:-2%!important}.seed-token{left:22%!important}.drag-label{left:8%!important}}
 `;document.head.appendChild(s)}
 applyVisualFixes();
+const skullImg=document.querySelector('.skull-img');if(skullImg)skullImg.src='assets/skull-transparent.webp';
 load();render();
