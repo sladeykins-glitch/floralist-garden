@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Grave of Sir Isen Willowcrest</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070b09;
+      --stone: #6e756f;
+      --stone-dark: #454b47;
+      --stone-light: #8a918b;
+      --text: #232824;
+      --moss: #435632;
+      --moss-light: #5f7443;
+      --moss-dark: #283721;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(112,130,117,.11), transparent 35%),
+        linear-gradient(#0d1410 0%, #080c0a 58%, #050706 100%);
+      color: #d7ddd8;
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 18px 12px 42px;
+      touch-action: pan-y;
+    }
+
+    .scene {
+      width: min(100%, 780px);
+      text-align: center;
+      position: relative;
+    }
+
+    .mist {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: .36;
+      filter: blur(18px);
+    }
+
+    .mist::before,
+    .mist::after {
+      content: "";
+      position: absolute;
+      width: 70%;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(171,185,176,.12);
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+
+    .mist::before { top: 16%; left: -24%; }
+    .mist::after { top: 58%; right: -30%; animation-delay: -7s; }
+
+    @keyframes drift {
+      from { transform: translateX(0) scale(1); }
+      to { transform: translateX(55%) scale(1.25); }
+    }
+
+    .intro {
+      margin: 8px auto 14px;
+      font-size: clamp(.86rem, 2.6vw, 1rem);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(214,224,217,.62);
+    }
+
+    .grave-wrap {
+      position: relative;
+      width: min(94vw, 650px);
+      margin: 0 auto;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .grave-shadow {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      bottom: -14px;
+      height: 42px;
+      background: radial-gradient(ellipse, rgba(0,0,0,.72), rgba(0,0,0,0) 70%);
+      filter: blur(7px);
+    }
+
+    .stone {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 0.72 / 1;
+      min-height: 650px;
+      overflow: hidden;
+      border-radius: 44% 44% 4% 4% / 18% 18% 3% 3%;
+      background:
+        radial-gradient(circle at 30% 14%, rgba(255,255,255,.09), transparent 18%),
+        radial-gradient(circle at 72% 26%, rgba(0,0,0,.07), transparent 22%),
+        repeating-linear-gradient(101deg, rgba(255,255,255,.02) 0 2px, transparent 2px 7px),
+        linear-gradient(100deg, #626a64 0%, #7c837d 46%, #6b726c 70%, #555d57 100%);
+      box-shadow:
+        inset 14px 0 22px rgba(255,255,255,.035),
+        inset -18px -14px 28px rgba(0,0,0,.24),
+        0 22px 45px rgba(0,0,0,.42);
+      border: 1px solid rgba(0,0,0,.45);
+    }
+
+    .stone::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: inherit;
+      border: 1px solid rgba(255,255,255,.05);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .stone::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      opacity: .55;
+      background:
+        linear-gradient(73deg, transparent 49%, rgba(35,40,36,.26) 49.5%, transparent 50.4%) 11% 23% / 54% 44% no-repeat,
+        linear-gradient(108deg, transparent 49%, rgba(32,37,33,.24) 49.4%, transparent 50.2%) 60% 52% / 48% 33% no-repeat,
+        linear-gradient(21deg, transparent 49%, rgba(45,50,46,.18) 49.4%, transparent 50.4%) 10% 73% / 70% 26% no-repeat;
+    }
+
+    .inscription {
+      position: absolute;
+      inset: 13.5% 9% 7%;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(6px, 1.4vw, 10px);
+      padding: 2%;
+      text-align: center;
+      color: rgba(27,31,28,.89);
+      text-shadow:
+        0 1px 0 rgba(220,226,221,.32),
+        0 -1px 1px rgba(0,0,0,.52);
+      font-size: clamp(.75rem, 2.65vw, 1.14rem);
+      line-height: 1.27;
+      font-weight: 600;
+      letter-spacing: .015em;
+    }
+
+    .inscription p { margin: 0; }
+
+    .inscription .clue {
+      font-weight: 800;
+      color: rgba(19,23,20,.97);
+      text-shadow:
+        0 1px 0 rgba(232,236,233,.38),
+        0 -1.4px 1px rgba(0,0,0,.68);
+    }
+
+    .name {
+      margin-top: 7px !important;
+      font-size: 1.08em;
+      letter-spacing: .055em;
+    }
+
+    #mossCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    #mossCanvas:active { cursor: grabbing; }
+
+    .completion {
+      min-height: 36px;
+      margin: 18px auto 6px;
+      font-size: clamp(.92rem, 3.5vw, 1.1rem);
+      font-style: italic;
+      color: rgba(218,226,220,.72);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .completion.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid rgba(211,222,215,.22);
+      border-radius: 999px;
+      background: rgba(19,27,22,.72);
+      color: rgba(229,235,231,.82);
+      font: inherit;
+      font-size: .9rem;
+      min-height: 44px;
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+
+    button:hover { background: rgba(31,41,34,.9); }
+    button:focus-visible { outline: 2px solid #c9d7cc; outline-offset: 3px; }
+
+    @media (max-width: 560px) {
+      body { padding: 10px 7px 28px; }
+      .stone { min-height: 610px; }
+      .inscription {
+        inset: 12.5% 7.5% 5.5%;
+        font-size: clamp(.72rem, 3.15vw, .95rem);
+        gap: 5px;
+        line-height: 1.22;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .stone { min-height: 570px; }
+      .inscription {
+        font-size: clamp(.67rem, 3.25vw, .83rem);
+        line-height: 1.18;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mist::before, .mist::after { animation: none; }
+      .completion { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div class="mist" aria-hidden="true"></div>
+    <div class="intro">Wipe away what time has hidden</div>
+
+    <div class="grave-wrap">
+      <div class="grave-shadow" aria-hidden="true"></div>
+      <section class="stone" aria-label="An old gravestone covered in moss. Rub or drag across it to clear the moss and reveal the inscription.">
+        <div class="inscription" aria-hidden="true">
+          <p>Thy promised death, stolen by thine own hand,<br>hath denied thee the grave thou wert sworn to claim.</p>
+          <p>A covenant of death eternal,<br>whose sweet and solemn rest hath been withheld from thee yet longer.</p>
+          <p class="clue">Let the seed take root within thy heart,</p>
+          <p class="clue">and suffer it to grow, that which was planted long ago.</p>
+          <p class="clue">Let it console you as you place it at the centre.</p>
+          <p>Arise, I say, and serve once more.</p>
+          <p>For the hour hath come,<br>the vow remaineth unbroken,<br>and the promise, long awaited,<br>shall at last be fulfilled.</p>
+          <p class="name">Arise, Sir Isen Willowcrest.</p>
+          <p>Arise from thy silence.<br>Arise from thy rest.<br>And take thy place once more among the living.</p>
+        </div>
+        <canvas id="mossCanvas" aria-label="Moss covering the gravestone. Drag across the stone to wipe it away."></canvas>
+      </section>
+    </div>
+
+    <div id="completion" class="completion" aria-live="polite">The words beneath the moss stand revealed.</div>
+    <div class="controls">
+      <button id="resetButton" type="button">Restore moss</button>
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('mossCanvas');
+      const stone = canvas.parentElement;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      const resetButton = document.getElementById('resetButton');
+      const completion = document.getElementById('completion');
+
+      let drawing = false;
+      let lastPoint = null;
+      let completed = false;
+      let checkCounter = 0;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function rand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function hashNoise(x, y) {
+        const v = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+        return v - Math.floor(v);
+      }
+
+      function fitCanvas() {
+        const rect = stone.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.max(1, Math.round(rect.width * dpr));
+        canvas.height = Math.max(1, Math.round(rect.height * dpr));
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        paintMoss(rect.width, rect.height);
+      }
+
+      function paintMoss(w, h) {
+        completed = false;
+        completion.classList.remove('visible');
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(0, 0, w, h);
+
+        // Thin damp green film so the stone still reads as stone beneath the growth.
+        const wash = ctx.createLinearGradient(0, 0, w, h);
+        wash.addColorStop(0, 'rgba(38,54,32,.54)');
+        wash.addColorStop(.5, 'rgba(52,68,41,.46)');
+        wash.addColorStop(1, 'rgba(27,42,25,.58)');
+        ctx.fillStyle = wash;
+        ctx.fillRect(0, 0, w, h);
+
+        // Dense organic moss clusters.
+        const count = Math.round((w * h) / 1800);
+        for (let i = 0; i < count; i++) {
+          const x = rand(0, w);
+          const y = rand(0, h);
+          const edgeBias = Math.min(x, w - x, y, h - y) / Math.min(w, h);
+          const radius = rand(14, 46) * (edgeBias < .1 ? 1.3 : 1);
+          const g = ctx.createRadialGradient(x, y, 2, x, y, radius);
+          const choice = Math.random();
+          if (choice < .33) {
+            g.addColorStop(0, 'rgba(94,116,66,.94)');
+            g.addColorStop(.48, 'rgba(63,84,46,.88)');
+          } else if (choice < .68) {
+            g.addColorStop(0, 'rgba(75,99,55,.95)');
+            g.addColorStop(.52, 'rgba(48,70,39,.9)');
+          } else {
+            g.addColorStop(0, 'rgba(55,75,42,.96)');
+            g.addColorStop(.52, 'rgba(35,54,31,.91)');
+          }
+          g.addColorStop(1, 'rgba(34,52,29,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Fine speckle adds a fibrous, uneven edge.
+        const dots = Math.round((w * h) / 520);
+        for (let i = 0; i < dots; i++) {
+          const x = rand(0, w);
+          const y = rand(0, h);
+          const r = rand(.7, 3.2);
+          const n = hashNoise(x, y);
+          ctx.fillStyle = n > .55 ? 'rgba(115,132,79,.52)' : 'rgba(25,43,25,.56)';
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      function canvasPoint(evt) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: Math.max(0, Math.min(rect.width, evt.clientX - rect.left)),
+          y: Math.max(0, Math.min(rect.height, evt.clientY - rect.top))
+        };
+      }
+
+      function eraseAt(x, y, strength = 1) {
+        const rect = canvas.getBoundingClientRect();
+        const radius = Math.max(24, Math.min(48, rect.width * .07)) * strength;
+
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';
+
+        // Several offset circles make each wipe irregular rather than perfectly round.
+        for (let i = 0; i < 5; i++) {
+          const ox = rand(-radius * .25, radius * .25);
+          const oy = rand(-radius * .22, radius * .22);
+          const rr = radius * rand(.58, 1.05);
+          const fade = ctx.createRadialGradient(x + ox, y + oy, rr * .22, x + ox, y + oy, rr);
+          fade.addColorStop(0, 'rgba(0,0,0,.96)');
+          fade.addColorStop(.68, 'rgba(0,0,0,.82)');
+          fade.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = fade;
+          ctx.beginPath();
+          ctx.arc(x + ox, y + oy, rr, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      function eraseLine(a, b) {
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const dist = Math.hypot(dx, dy);
+        const step = 12;
+        const steps = Math.max(1, Math.ceil(dist / step));
+        for (let i = 0; i <= steps; i++) {
+          const t = i / steps;
+          eraseAt(a.x + dx * t, a.y + dy * t, .95);
+        }
+      }
+
+      function maybeCheckCompletion() {
+        if (completed) return;
+        checkCounter++;
+        if (checkCounter % 8 !== 0) return;
+
+        const sampleW = 72;
+        const sampleH = Math.max(72, Math.round(sampleW * canvas.height / canvas.width));
+        const temp = document.createElement('canvas');
+        temp.width = sampleW;
+        temp.height = sampleH;
+        const tctx = temp.getContext('2d', { willReadFrequently: true });
+        tctx.drawImage(canvas, 0, 0, sampleW, sampleH);
+        const data = tctx.getImageData(0, 0, sampleW, sampleH).data;
+
+        let transparent = 0;
+        const total = sampleW * sampleH;
+        for (let i = 3; i < data.length; i += 4) {
+          if (data[i] < 50) transparent++;
+        }
+
+        if (transparent / total > .62) {
+          completed = true;
+          completion.classList.add('visible');
+        }
+      }
+
+      function start(evt) {
+        drawing = true;
+        canvas.setPointerCapture?.(evt.pointerId);
+        lastPoint = canvasPoint(evt);
+        eraseAt(lastPoint.x, lastPoint.y);
+        maybeCheckCompletion();
+      }
+
+      function move(evt) {
+        if (!drawing) return;
+        const point = canvasPoint(evt);
+        eraseLine(lastPoint, point);
+        lastPoint = point;
+        maybeCheckCompletion();
+      }
+
+      function end(evt) {
+        if (!drawing) return;
+        drawing = false;
+        lastPoint = null;
+        try { canvas.releasePointerCapture?.(evt.pointerId); } catch (_) {}
+        maybeCheckCompletion();
+      }
+
+      canvas.addEventListener('pointerdown', start);
+      canvas.addEventListener('pointermove', move);
+      canvas.addEventListener('pointerup', end);
+      canvas.addEventListener('pointercancel', end);
+      canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+      resetButton.addEventListener('click', () => {
+        const rect = canvas.getBoundingClientRect();
+        paintMoss(rect.width, rect.height);
+      });
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(fitCanvas, 160);
+      });
+
+      fitCanvas();
+    })();
+  </script>
+</body>
+</html>
