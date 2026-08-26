@@ -26,44 +26,19 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%}
-body{
-  font-family:Georgia,"Times New Roman",serif;
-  background:
-    radial-gradient(circle at 50% 8%,rgba(255,241,196,.08),transparent 18%),
-    linear-gradient(180deg,#101511 0%,#18211b 45%,#25312a 100%);
-  color:var(--text);
-  overflow-x:hidden;
-}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;
-  background-image:radial-gradient(#fff 1px,transparent 1px);background-size:24px 24px;
-}
+body{font-family:Georgia,"Times New Roman",serif;background:radial-gradient(circle at 50% 8%,rgba(255,241,196,.08),transparent 18%),linear-gradient(180deg,#101511 0%,#18211b 45%,#25312a 100%);color:var(--text);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:24px 24px}
 header{text-align:center;padding:calc(16px + env(safe-area-inset-top)) 16px 10px;position:relative;z-index:3}
 h1{margin:0;font-size:clamp(1.75rem,7vw,2.9rem);letter-spacing:.12em}
 .sub{margin-top:5px;color:var(--soft);font-style:italic}
 main{width:min(1020px,100%);margin:auto;padding:0 10px calc(18px + env(safe-area-inset-bottom))}
-.hero{
-  position:relative;overflow:hidden;min-height:650px;height:min(80vh,820px);
-  border:1px solid rgba(171,135,87,.42);border-radius:24px;
-  background:
-    radial-gradient(circle at 50% 30%,rgba(244,229,178,.08),transparent 24%),
-    linear-gradient(180deg,#232d27 0%,#18211c 48%,#131913 100%);
-  box-shadow:0 18px 40px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
-}
-.hero::after{
-  content:"";position:absolute;left:-10%;right:-10%;bottom:-18%;height:56%;z-index:0;
-  background:radial-gradient(ellipse,var(--soil) 0 42%,#6f4a33 43% 68%,var(--soil2) 69%);
-  border-radius:50% 50% 0 0;
-}
+.hero{position:relative;overflow:hidden;min-height:650px;height:min(80vh,820px);border:1px solid rgba(171,135,87,.42);border-radius:24px;background:radial-gradient(circle at 50% 30%,rgba(244,229,178,.08),transparent 24%),linear-gradient(180deg,#232d27 0%,#18211c 48%,#131913 100%);box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.03)}
+.hero::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-18%;height:56%;z-index:0;background:radial-gradient(ellipse,var(--soil) 0 42%,#6f4a33 43% 68%,var(--soil2) 69%);border-radius:50% 50% 0 0}
 .moon{position:absolute;right:7%;top:6%;width:86px;height:86px;border-radius:50%;background:#f4e3aa;box-shadow:0 0 36px rgba(244,227,170,.19);opacity:.95}
 .titlebox{position:absolute;top:22px;left:20px;right:20px;text-align:center;z-index:6}
 .seedname{font-size:1.06rem;text-transform:uppercase;letter-spacing:.14em}
 .seeddesc{font-size:.92rem;color:var(--soft);margin-top:4px}
-.clock{
-  position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);
-  width:min(80vw,390px);height:min(80vw,390px);border-radius:50%;z-index:2;
-  box-shadow:0 0 0 1px rgba(255,255,255,.03), inset 0 0 26px rgba(0,0,0,.4);
-}
+.clock{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);width:min(80vw,390px);height:min(80vw,390px);border-radius:50%;z-index:2;box-shadow:0 0 0 1px rgba(255,255,255,.03),inset 0 0 26px rgba(0,0,0,.4)}
 .clock::before{content:"";position:absolute;inset:14px;border-radius:50%;border:1px dashed rgba(214,197,156,.35)}
 .clock::after{content:"";position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
 .seg{position:absolute;inset:0;border-radius:50%;clip-path:polygon(50% 50%,0 0,50% 0);background:rgba(119,85,55,.34);border:3px solid rgba(171,135,87,.55);opacity:.75;transition:.3s}
@@ -72,52 +47,6 @@ main{width:min(1020px,100%);margin:auto;padding:0 10px calc(18px + env(safe-area
 .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;display:grid;place-items:center;z-index:3;text-align:center;background:radial-gradient(circle at 40% 35%,#2c382f,#16201a 72%);border:2px solid rgba(214,197,156,.55)}
 .core strong{display:block;font-size:1.08rem}.core span{font-size:.72rem;color:var(--soft)}
 .stage-line{position:absolute;left:0;right:0;top:12px;text-align:center;color:#dcc796;z-index:4;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
-.centerpiece{position:absolute;left:50%;bottom:10%;transform:translateX(-50%);width:min(72vw,350px);height:360px;z-index:4}
-.skull-scene{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:300px;height:330px}
-.skull{
-  position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
-  width:240px;height:200px;z-index:4;
-}
-.cradle-shadow{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:250px;height:56px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.42),transparent 70%);z-index:1}
-.skull-top{
-  position:absolute;left:50%;top:0;transform:translateX(-50%);
-  width:210px;height:136px;border-radius:50% 50% 44% 44%;
-  background:linear-gradient(180deg,var(--bone) 0%,#d6ccba 48%,var(--bone2) 100%);
-  border:2px solid rgba(90,69,52,.32);box-shadow:inset 0 -8px 14px rgba(111,91,63,.14);
-}
-.skull-top::before,.skull-top::after{content:"";position:absolute;background:rgba(76,55,42,.20);border-radius:50%}
-.skull-top::before{width:30px;height:18px;left:28px;top:18px;transform:rotate(-12deg)}
-.skull-top::after{width:38px;height:20px;right:26px;top:22px;transform:rotate(12deg)}
-.eye{position:absolute;top:58px;width:54px;height:44px;background:#35261f;border-radius:50% 50% 46% 46%;box-shadow:inset 0 6px 12px rgba(0,0,0,.35)}
-.eye.left{left:48px;transform:rotate(-10deg)} .eye.right{right:48px;transform:rotate(10deg)}
-.nose{position:absolute;left:50%;top:82px;transform:translateX(-50%);width:26px;height:34px;background:#3d2b22;clip-path:polygon(50% 0,0 100%,100% 100%);opacity:.95}
-.cheek{position:absolute;top:104px;width:38px;height:16px;background:rgba(108,79,61,.16);border-radius:50%}
-.cheek.left{left:22px;transform:rotate(-10deg)} .cheek.right{right:22px;transform:rotate(10deg)}
-.crack{position:absolute;left:104px;top:8px;width:5px;height:52px;background:linear-gradient(180deg,rgba(76,55,42,.72),rgba(76,55,42,0));clip-path:polygon(45% 0,90% 12%,50% 26%,82% 38%,35% 60%,60% 78%,18% 100%,0 88%,24% 66%,8% 42%,34% 20%,12% 0)}
-.jaw{
-  position:absolute;left:50%;top:116px;transform:translateX(-50%);
-  width:152px;height:82px;border-radius:0 0 34px 34px;
-  background:linear-gradient(180deg,#d7cebc,#bfb3a2);border:2px solid rgba(90,69,52,.28);
-}
-.jaw::before,.jaw::after{content:"";position:absolute;top:-8px;width:18px;height:36px;border:2px solid rgba(90,69,52,.22);background:#d5c9b6;border-radius:12px}
-.jaw::before{left:-4px;transform:rotate(20deg)} .jaw::after{right:-4px;transform:rotate(-20deg)}
-.teeth{position:absolute;left:50%;top:14px;transform:translateX(-50%);display:flex;gap:4px}
-.tooth{width:14px;height:26px;background:#eee4d2;border:1px solid rgba(90,69,52,.2);border-radius:0 0 6px 6px}
-.seed-pit{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:92px;height:36px;border-radius:50%;background:radial-gradient(ellipse,#2f231a,#4a3528 65%,#6a4b34);box-shadow:inset 0 10px 16px rgba(0,0,0,.34),0 2px 0 rgba(255,255,255,.08)}
-.seed-pit::after{content:"";position:absolute;left:50%;top:10px;transform:translateX(-50%);width:60px;height:10px;border-radius:50%;background:rgba(0,0,0,.15)}
-.seed-stage{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:130px;height:150px;z-index:6}
-.stem{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);width:8px;height:0;border-radius:999px;background:linear-gradient(180deg,#90a57d,#486245);transition:height .45s ease,bottom .45s ease;box-shadow:0 0 10px rgba(111,141,101,.18)}
-.leaf{position:absolute;width:42px;height:20px;background:linear-gradient(180deg,#87a97d,#5d7b59);border-radius:100% 0 100% 0;opacity:0;transition:.35s ease}
-.leaf.left{left:20px;bottom:56px;transform:rotate(-28deg)}
-.leaf.right{right:20px;bottom:72px;transform:scaleX(-1) rotate(-28deg)}
-.bud{position:absolute;left:50%;bottom:76px;transform:translateX(-50%) scale(.2);width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#efe0c6,#b99086 68%,#69424d 100%);opacity:0;transition:.35s ease}
-.petal{position:absolute;width:30px;height:18px;background:linear-gradient(180deg,#f5eee4,#a68283 72%,#6e4454);border-radius:100% 0 100% 0;opacity:0;transition:.35s ease}
-.petal.p1{left:40px;bottom:102px;transform:rotate(-18deg)}
-.petal.p2{right:40px;bottom:102px;transform:scaleX(-1) rotate(-18deg)}
-.petal.p3{left:50%;margin-left:-22px;bottom:114px;transform:rotate(-88deg)}
-.runes{position:absolute;inset:0;pointer-events:none}
-.runes span{position:absolute;color:rgba(239,219,165,.82);font-size:1rem;text-shadow:0 0 10px rgba(239,219,165,.24);opacity:0;transition:.35s ease}
-.runes span:nth-child(1){left:12px;top:12px}.runes span:nth-child(2){right:18px;top:30px}.runes span:nth-child(3){left:24px;bottom:32px}.runes span:nth-child(4){right:12px;bottom:12px}
 .wisps{position:absolute;inset:0;pointer-events:none;z-index:8}
 .wisp{position:absolute;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,var(--magic) 0%,rgba(239,219,165,.8) 30%,rgba(185,142,83,.25) 62%,rgba(185,142,83,0) 72%);filter:blur(.2px);animation:drift 1.9s ease-out forwards}
 .wisp::after{content:"";position:absolute;left:6px;top:10px;width:5px;height:24px;background:linear-gradient(180deg,rgba(239,219,165,.7),rgba(239,219,165,0));border-radius:999px;transform-origin:top center;transform:rotate(12deg)}
@@ -125,341 +54,46 @@ main{width:min(1020px,100%);margin:auto;padding:0 10px calc(18px + env(safe-area
 .creep{position:absolute;inset:0;pointer-events:none;z-index:5}
 .vines-left,.vines-right,.overgrowth-top,.roots-bottom{position:absolute;opacity:0;transition:opacity .45s ease}
 .vines-left,.vines-right{top:0;bottom:0;width:28%}
-.vines-left{left:0;background:
-  radial-gradient(circle at 18% 14%,rgba(111,141,101,.7) 0 8px,transparent 9px),
-  radial-gradient(circle at 26% 28%,rgba(111,141,101,.75) 0 10px,transparent 11px),
-  radial-gradient(circle at 22% 46%,rgba(111,141,101,.68) 0 9px,transparent 10px),
-  radial-gradient(circle at 36% 64%,rgba(111,141,101,.72) 0 10px,transparent 11px),
-  linear-gradient(110deg,transparent 0 24%,rgba(79,104,74,.9) 25% 26%,transparent 27% 37%,rgba(79,104,74,.75) 38% 39%,transparent 40%),
-  linear-gradient(85deg,transparent 0 48%,rgba(57,78,55,.8) 49% 50%,transparent 51%)}
-.vines-right{right:0;background:
-  radial-gradient(circle at 82% 18%,rgba(111,141,101,.7) 0 8px,transparent 9px),
-  radial-gradient(circle at 70% 34%,rgba(111,141,101,.75) 0 10px,transparent 11px),
-  radial-gradient(circle at 78% 52%,rgba(111,141,101,.68) 0 9px,transparent 10px),
-  radial-gradient(circle at 62% 68%,rgba(111,141,101,.72) 0 10px,transparent 11px),
-  linear-gradient(250deg,transparent 0 24%,rgba(79,104,74,.9) 25% 26%,transparent 27% 37%,rgba(79,104,74,.75) 38% 39%,transparent 40%),
-  linear-gradient(275deg,transparent 0 48%,rgba(57,78,55,.8) 49% 50%,transparent 51%)}
-.overgrowth-top{left:0;right:0;top:0;height:26%;background:
-  radial-gradient(circle at 14% 90%,rgba(111,141,101,.8) 0 12px,transparent 13px),
-  radial-gradient(circle at 24% 74%,rgba(111,141,101,.72) 0 10px,transparent 11px),
-  radial-gradient(circle at 76% 82%,rgba(111,141,101,.75) 0 11px,transparent 12px),
-  radial-gradient(circle at 86% 64%,rgba(111,141,101,.72) 0 10px,transparent 11px),
-  linear-gradient(180deg,rgba(38,56,40,.65),transparent 80%)}
-.roots-bottom{left:10%;right:10%;bottom:10%;height:28%;background:
-  linear-gradient(70deg,transparent 0 20%,rgba(53,41,31,.8) 21% 22%,transparent 23% 40%,rgba(53,41,31,.75) 41% 42%,transparent 43%),
-  linear-gradient(110deg,transparent 0 24%,rgba(53,41,31,.75) 25% 26%,transparent 27% 52%,rgba(53,41,31,.8) 53% 54%,transparent 55%),
-  linear-gradient(90deg,transparent 0 48%,rgba(53,41,31,.7) 49% 50%,transparent 51%)}
-.hero.g1 .vines-left,.hero.g1 .vines-right{opacity:.18}
-.hero.g2 .vines-left,.hero.g2 .vines-right{opacity:.34}
-.hero.g2 .roots-bottom{opacity:.18}
-.hero.g3 .vines-left,.hero.g3 .vines-right{opacity:.52}
-.hero.g3 .roots-bottom{opacity:.35}
-.hero.g3 .overgrowth-top{opacity:.18}
-.hero.g4 .vines-left,.hero.g4 .vines-right{opacity:.72}
-.hero.g4 .roots-bottom{opacity:.5}
-.hero.g4 .overgrowth-top{opacity:.34}
-.hero.g1 .stem{height:34px}
-.hero.g2 .stem{height:64px}
-.hero.g2 .leaf.left,.hero.g2 .leaf.right{opacity:1}
-.hero.g3 .stem{height:86px}
-.hero.g3 .leaf.left,.hero.g3 .leaf.right,.hero.g3 .bud{opacity:1}
-.hero.g3 .bud{transform:translateX(-50%) scale(1)}
-.hero.g4 .stem{height:98px}
-.hero.g4 .leaf.left,.hero.g4 .leaf.right,.hero.g4 .bud,.hero.g4 .petal,.hero.g4 .runes span{opacity:1}
-.hero.g4 .bud{transform:translateX(-50%) scale(1.08)}
-.controls{position:absolute;left:12px;right:12px;bottom:14px;display:flex;gap:8px;z-index:10}
-.btn{flex:1;min-height:54px;border:0;border-radius:14px;padding:14px 10px;font:inherit;font-size:1rem;font-weight:bold;color:#fff;background:linear-gradient(180deg,#738f69,#556d4e);box-shadow:0 4px 0 #3a4e36;cursor:pointer}
-.btn.alt{background:linear-gradient(180deg,#8f6a4c,#674b36);box-shadow:0 4px 0 #4d3729}
-.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.4)}
-.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px;margin-top:12px}
-.card{background:var(--panel);border:1px solid rgba(171,135,87,.35);border-radius:18px;padding:14px;box-shadow:0 10px 28px rgba(0,0,0,.22)}
-.card h2{margin:0 0 10px;font-size:.86rem;color:#e2cf9f;text-transform:uppercase;letter-spacing:.13em}
-.current{font-size:1.3rem;text-transform:uppercase}
-.flavor{color:var(--soft);font-style:italic;margin:.2rem 0 12px}
-.progress{height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);border:1px solid rgba(171,135,87,.2)}
-.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#728f68,#dbc891);transition:.35s}
-.badge{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:999px;border:1px solid rgba(171,135,87,.22);background:rgba(171,135,87,.08);color:#e9dbb7;font-size:.76rem;text-transform:uppercase;letter-spacing:.07em}
-.effects{display:grid;gap:8px;margin-top:12px}
-.effect{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-top:1px solid rgba(255,255,255,.07)}
-.effect:first-child{border-top:0;padding-top:0}
-.num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(185,115,62,.25);border:1px solid rgba(171,135,87,.28);font-weight:bold}
-.effect.active .num{background:rgba(185,115,62,.85)}
-.seedlist{display:grid;gap:8px}
-.seedpick{width:100%;text-align:left;border:1px solid rgba(171,135,87,.3);border-radius:14px;background:rgba(255,255,255,.03);padding:12px;color:inherit;cursor:pointer}
-.seedpick.active{background:rgba(171,135,87,.12)}
-.seedpick strong{display:block;color:#fff0d2;text-transform:uppercase}
-.seedpick small{display:block;color:var(--soft);margin-top:4px}
-.form{display:grid;gap:10px}
-label{display:block;color:#e2cf9f;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-input[type=text],textarea{width:100%;margin-top:5px;border-radius:12px;border:1px solid rgba(171,135,87,.24);background:rgba(255,255,255,.04);padding:10px 12px;color:var(--text);font:inherit}
-textarea{min-height:74px;resize:vertical}
-.note{font-size:.78rem;line-height:1.45;color:#cab992}
-footer{text-align:center;color:#cab992;padding:14px 6px 2px;font-size:.82rem}
-@media (max-width:760px){.grid{grid-template-columns:1fr}}
-@media (max-width:560px){
-  .hero{min-height:700px}
-  .clock{top:33%;width:min(88vw,360px);height:min(88vw,360px)}
-  .centerpiece{width:100%;height:370px;bottom:12%}
-  .skull-scene{width:280px;height:320px}
-  .skull{width:220px;height:190px}
-  .skull-top{width:190px;height:126px}.eye{top:56px;width:48px;height:40px}.eye.left{left:42px}.eye.right{right:42px}
-  .jaw{width:142px}
-  .controls{flex-direction:column}
-}
+.vines-left{left:0;background:radial-gradient(circle at 18% 14%,rgba(111,141,101,.7) 0 8px,transparent 9px),radial-gradient(circle at 26% 28%,rgba(111,141,101,.75) 0 10px,transparent 11px),radial-gradient(circle at 22% 46%,rgba(111,141,101,.68) 0 9px,transparent 10px),radial-gradient(circle at 36% 64%,rgba(111,141,101,.72) 0 10px,transparent 11px),linear-gradient(110deg,transparent 0 24%,rgba(79,104,74,.9) 25% 26%,transparent 27% 37%,rgba(79,104,74,.75) 38% 39%,transparent 40%),linear-gradient(85deg,transparent 0 48%,rgba(57,78,55,.8) 49% 50%,transparent 51%)}
+.vines-right{right:0;background:radial-gradient(circle at 82% 18%,rgba(111,141,101,.7) 0 8px,transparent 9px),radial-gradient(circle at 70% 34%,rgba(111,141,101,.75) 0 10px,transparent 11px),radial-gradient(circle at 78% 52%,rgba(111,141,101,.68) 0 9px,transparent 10px),radial-gradient(circle at 62% 68%,rgba(111,141,101,.72) 0 10px,transparent 11px),linear-gradient(250deg,transparent 0 24%,rgba(79,104,74,.9) 25% 26%,transparent 27% 37%,rgba(79,104,74,.75) 38% 39%,transparent 40%),linear-gradient(275deg,transparent 0 48%,rgba(57,78,55,.8) 49% 50%,transparent 51%)}
+.overgrowth-top{left:0;right:0;top:0;height:26%;background:radial-gradient(circle at 14% 90%,rgba(111,141,101,.8) 0 12px,transparent 13px),radial-gradient(circle at 24% 74%,rgba(111,141,101,.72) 0 10px,transparent 11px),radial-gradient(circle at 76% 82%,rgba(111,141,101,.75) 0 11px,transparent 12px),radial-gradient(circle at 86% 64%,rgba(111,141,101,.72) 0 10px,transparent 11px),linear-gradient(180deg,rgba(38,56,40,.65),transparent 80%)}
+.roots-bottom{left:10%;right:10%;bottom:10%;height:28%;background:linear-gradient(70deg,transparent 0 20%,rgba(53,41,31,.8) 21% 22%,transparent 23% 40%,rgba(53,41,31,.75) 41% 42%,transparent 43%),linear-gradient(110deg,transparent 0 24%,rgba(53,41,31,.75) 25% 26%,transparent 27% 52%,rgba(53,41,31,.8) 53% 54%,transparent 55%),linear-gradient(90deg,transparent 0 48%,rgba(53,41,31,.7) 49% 50%,transparent 51%)}
+.hero.g1 .vines-left,.hero.g1 .vines-right{opacity:.18}.hero.g2 .vines-left,.hero.g2 .vines-right{opacity:.34}.hero.g2 .roots-bottom{opacity:.18}.hero.g3 .vines-left,.hero.g3 .vines-right{opacity:.52}.hero.g3 .roots-bottom{opacity:.35}.hero.g3 .overgrowth-top{opacity:.18}.hero.g4 .vines-left,.hero.g4 .vines-right{opacity:.72}.hero.g4 .roots-bottom{opacity:.5}.hero.g4 .overgrowth-top{opacity:.34}
+.controls{position:absolute;left:12px;right:12px;bottom:14px;display:flex;gap:8px;z-index:10}.btn{flex:1;min-height:54px;border:0;border-radius:14px;padding:14px 10px;font:inherit;font-size:1rem;font-weight:bold;color:#fff;background:linear-gradient(180deg,#738f69,#556d4e);box-shadow:0 4px 0 #3a4e36;cursor:pointer}.btn.alt{background:linear-gradient(180deg,#8f6a4c,#674b36);box-shadow:0 4px 0 #4d3729}.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.4)}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px;margin-top:12px}.card{background:var(--panel);border:1px solid rgba(171,135,87,.35);border-radius:18px;padding:14px;box-shadow:0 10px 28px rgba(0,0,0,.22)}.card h2{margin:0 0 10px;font-size:.86rem;color:#e2cf9f;text-transform:uppercase;letter-spacing:.13em}.current{font-size:1.3rem;text-transform:uppercase}.flavor{color:var(--soft);font-style:italic;margin:.2rem 0 12px}.progress{height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);border:1px solid rgba(171,135,87,.2)}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#728f68,#dbc891);transition:.35s}.badge{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:999px;border:1px solid rgba(171,135,87,.22);background:rgba(171,135,87,.08);color:#e9dbb7;font-size:.76rem;text-transform:uppercase;letter-spacing:.07em}.effects{display:grid;gap:8px;margin-top:12px}.effect{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-top:1px solid rgba(255,255,255,.07)}.effect:first-child{border-top:0;padding-top:0}.num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(185,115,62,.25);border:1px solid rgba(171,135,87,.28);font-weight:bold}.effect.active .num{background:rgba(185,115,62,.85)}
+.seedlist{display:grid;gap:8px}.seedpick{width:100%;text-align:left;border:1px solid rgba(171,135,87,.3);border-radius:14px;background:rgba(255,255,255,.03);padding:12px;color:inherit;cursor:pointer}.seedpick.active{background:rgba(171,135,87,.12)}.seedpick strong{display:block;color:#fff0d2;text-transform:uppercase}.seedpick small{display:block;color:var(--soft);margin-top:4px}.form{display:grid;gap:10px}label{display:block;color:#e2cf9f;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}input[type=text],textarea{width:100%;margin-top:5px;border-radius:12px;border:1px solid rgba(171,135,87,.24);background:rgba(255,255,255,.04);padding:10px 12px;color:var(--text);font:inherit}textarea{min-height:74px;resize:vertical}.note{font-size:.78rem;line-height:1.45;color:#cab992}footer{text-align:center;color:#cab992;padding:14px 6px 2px;font-size:.82rem}
+.growth-image-wrap{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);width:min(78vw,520px);height:min(58vh,520px);z-index:4;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}.growth-image{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 16px 20px rgba(0,0,0,.45));transition:opacity .28s ease,transform .35s ease}.growth-image.changing{opacity:.15;transform:scale(.97)}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}@media(max-width:560px){.hero{min-height:700px}.clock{top:33%;width:min(88vw,360px);height:min(88vw,360px)}.controls{flex-direction:column}.growth-image-wrap{width:min(94vw,470px);height:min(52vh,470px);bottom:14%}}
 </style>
 </head>
 <body>
-<header>
-  <h1>THE FLORALIST'S GARDEN</h1>
-  <div class="sub">A quiet place where Magiseeds awaken beneath old bones.</div>
-</header>
+<header><h1>THE FLORALIST'S GARDEN</h1><div class="sub">A quiet place where Magiseeds awaken beneath old bones.</div></header>
 <main>
-  <section class="hero g0" id="hero">
-    <div class="titlebox">
-      <div class="seedname" id="seedLabel">Grave Asphodel</div>
-      <div class="seeddesc" id="seedFlavor">Solemn and elegant, it embodies death’s ineluctability.</div>
-    </div>
-    <div class="moon"></div>
-    <div class="stage-line" id="stageCaption">Seed</div>
-    <div class="clock">
-      <div class="seg" id="seg1"></div>
-      <div class="seg" id="seg2"></div>
-      <div class="seg" id="seg3"></div>
-      <div class="seg" id="seg4"></div>
-      <div class="core"><div><strong id="clockText">0 / 4</strong><span>Growth</span></div></div>
-    </div>
-    <div class="creep">
-      <div class="vines-left"></div>
-      <div class="vines-right"></div>
-      <div class="overgrowth-top"></div>
-      <div class="roots-bottom"></div>
-    </div>
-    <div class="centerpiece">
-      <div class="skull-scene">
-        <div class="cradle-shadow"></div>
-        <div class="seed-stage">
-          <div class="stem"></div>
-          <div class="leaf left"></div>
-          <div class="leaf right"></div>
-          <div class="bud"></div>
-          <div class="petal p1"></div>
-          <div class="petal p2"></div>
-          <div class="petal p3"></div>
-          <div class="runes">
-            <span>✦</span><span>☾</span><span>✧</span><span>☽</span>
-          </div>
-        </div>
-        <div class="skull">
-          <div class="skull-top">
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-            <div class="nose"></div>
-            <div class="cheek left"></div>
-            <div class="cheek right"></div>
-            <div class="crack"></div>
-          </div>
-          <div class="jaw">
-            <div class="seed-pit"></div>
-            <div class="teeth">
-              <div class="tooth"></div><div class="tooth"></div><div class="tooth"></div><div class="tooth"></div><div class="tooth"></div><div class="tooth"></div><div class="tooth"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wisps" id="wisps"></div>
-    <div class="controls">
-      <button class="btn" id="advance">Advance Clock</button>
-      <button class="btn alt" id="reset">Reset</button>
-    </div>
-  </section>
-
-  <section class="grid">
-    <div class="card">
-      <h2>Current Magiseed</h2>
-      <div class="current" id="name">Grave Asphodel</div>
-      <div class="flavor" id="desc">Solemn and elegant, it embodies death’s ineluctability.</div>
-      <div class="progress"><i id="progress"></i></div>
-      <div class="badge" id="stageName">Unplanted</div>
-      <div class="effects" id="effects"></div>
-      <div class="badge" id="bloomBadge">Bloom / Completion</div>
-      <div class="note" id="result" style="margin-top:8px">Advance the clock to track effect thresholds. The fourth segment marks the Magiseed as fully matured.</div>
-    </div>
-
-    <div style="display:grid;gap:10px">
-      <div class="card">
-        <h2>Seed Codex</h2>
-        <div class="seedlist" id="seedList"></div>
-      </div>
-      <div class="card">
-        <h2>Add a New Seed</h2>
-        <div class="form">
-          <label>Name<input type="text" id="newName" placeholder="e.g. Grave Asphodel"></label>
-          <label>Short Description<textarea id="newDesc" placeholder="A short flavour description."></textarea></label>
-          <label>Effect 1<textarea id="newEffect1" placeholder="What happens at 1/4?"></textarea></label>
-          <label>Effect 2<textarea id="newEffect2" placeholder="What happens at 2/4?"></textarea></label>
-          <label>Effect 3<textarea id="newEffect3" placeholder="What happens at 3/4?"></textarea></label>
-          <label>Bloom / Completion Note<textarea id="newBloom" placeholder="What happens at 4/4 or once it is fully matured?"></textarea></label>
-          <button class="btn" type="button" id="addSeed">Add Seed to Codex</button>
-          <div class="note">This version keeps the seed template simple for in-game use. You can add image support later once you are ready.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer>Floralist's Garden • Fabula Ultima-inspired Magiseed tracker</footer>
+<section class="hero g0" id="hero">
+<div class="titlebox"><div class="seedname" id="seedLabel">Grave Asphodel</div><div class="seeddesc" id="seedFlavor">Solemn and elegant, it embodies death’s ineluctability.</div></div>
+<div class="moon"></div><div class="stage-line" id="stageCaption">Seed</div>
+<div class="clock"><div class="seg" id="seg1"></div><div class="seg" id="seg2"></div><div class="seg" id="seg3"></div><div class="seg" id="seg4"></div><div class="core"><div><strong id="clockText">0 / 4</strong><span>Growth</span></div></div></div>
+<div class="creep"><div class="vines-left"></div><div class="vines-right"></div><div class="overgrowth-top"></div><div class="roots-bottom"></div></div>
+<div class="growth-image-wrap"><img id="growthImage" class="growth-image" src="assets/grave-asphodel-stage-0.svg" alt="Grave Asphodel growing from a cracked skull"></div>
+<div class="wisps" id="wisps"></div>
+<div class="controls"><button class="btn" id="advance">Advance Clock</button><button class="btn alt" id="reset">Reset</button></div>
+</section>
+<section class="grid">
+<div class="card"><h2>Current Magiseed</h2><div class="current" id="name">Grave Asphodel</div><div class="flavor" id="desc">Solemn and elegant, it embodies death’s ineluctability.</div><div class="progress"><i id="progress"></i></div><div class="badge" id="stageName">Unplanted</div><div class="effects" id="effects"></div><div class="badge" id="bloomBadge">Bloom / Completion</div><div class="note" id="result" style="margin-top:8px">Advance the clock to track effect thresholds. The fourth segment marks the Magiseed as fully matured.</div></div>
+<div style="display:grid;gap:10px"><div class="card"><h2>Seed Codex</h2><div class="seedlist" id="seedList"></div></div><div class="card"><h2>Add a New Seed</h2><div class="form"><label>Name<input type="text" id="newName" placeholder="e.g. Grave Asphodel"></label><label>Short Description<textarea id="newDesc" placeholder="A short flavour description."></textarea></label><label>Effect 1<textarea id="newEffect1" placeholder="What happens at 1/4?"></textarea></label><label>Effect 2<textarea id="newEffect2" placeholder="What happens at 2/4?"></textarea></label><label>Effect 3<textarea id="newEffect3" placeholder="What happens at 3/4?"></textarea></label><label>Bloom / Completion Note<textarea id="newBloom" placeholder="What happens at 4/4 or once it is fully matured?"></textarea></label><button class="btn" type="button" id="addSeed">Add Seed to Codex</button><div class="note">This version keeps the seed template simple for in-game use. You can add image support later once you are ready.</div></div></div></div>
+</section><footer>Floralist's Garden • Fabula Ultima-inspired Magiseed tracker</footer>
 </main>
 <script>
-const defaultSeeds = [{
-  id:'grave-asphodel',
-  name:'Grave Asphodel',
-  desc:'Solemn and elegant, it embodies death’s ineluctability.',
-  bloom:'At 4/4 the Grave Asphodel fully blooms from the skull, steeping the battlefield in funerary magic. Add any harvest, bloom, or GM note here later if needed.',
-  stages:['Unplanted','First Stirring','Rooted','Awakened','Fully Matured'],
-  stageCaptions:['Seed','First Bloom','Spreading Influence','Dark Blossom','Matured'],
-  effects:[
-    'At the end of your turn, you may choose an enemy you can see. If you do, that enemy suffers <strong>shaken</strong>.',
-    'At the end of your turn, every enemy you can see suffers <strong>shaken</strong>.',
-    'At the end of your turn, you deal an amount of <strong>dark</strong> damage equal to <strong>[15 + your Skill Level in Chloromancy]</strong> to each enemy you can see who is suffering from <strong>shaken</strong>.'
-  ]
-}];
-
-let seeds = [];
-let selected = null;
-let growth = 0;
-const $ = id => document.getElementById(id);
-
-function loadState(){
-  try{
-    const saved = JSON.parse(localStorage.getItem('floralistSeeds') || 'null');
-    seeds = Array.isArray(saved) && saved.length ? saved : JSON.parse(JSON.stringify(defaultSeeds));
-  }catch(err){
-    seeds = JSON.parse(JSON.stringify(defaultSeeds));
-  }
-  const selectedId = localStorage.getItem('floralistSelected');
-  const savedGrowth = parseInt(localStorage.getItem('floralistGrowth') || '0', 10);
-  selected = seeds.find(s => s.id === selectedId) || seeds[0];
-  growth = Number.isFinite(savedGrowth) ? Math.max(0, Math.min(4, savedGrowth)) : 0;
-}
-
-function saveState(){
-  localStorage.setItem('floralistSeeds', JSON.stringify(seeds));
-  localStorage.setItem('floralistSelected', selected ? selected.id : '');
-  localStorage.setItem('floralistGrowth', String(growth));
-}
-
-function renderCodex(){
-  $('seedList').innerHTML = seeds.map(seed => `
-    <button class="seedpick ${selected && selected.id === seed.id ? 'active' : ''}" data-id="${seed.id}">
-      <strong>${seed.name}</strong>
-      <small>${seed.desc}</small>
-    </button>
-  `).join('');
-  document.querySelectorAll('.seedpick').forEach(button => {
-    button.onclick = () => {
-      selected = seeds.find(s => s.id === button.dataset.id) || seeds[0];
-      growth = 0;
-      renderCodex();
-      update();
-      saveState();
-    };
-  });
-}
-
-function spawnWisps(count){
-  const field = $('wisps');
-  for(let i = 0; i < count; i++){
-    const w = document.createElement('span');
-    w.className = 'wisp';
-    const startX = 40 + Math.random() * 20;
-    const startY = 58 + Math.random() * 14;
-    const dx = (Math.random() * 180 - 90).toFixed(0) + 'px';
-    const dy = (-70 - Math.random() * 120).toFixed(0) + 'px';
-    w.style.left = startX + '%';
-    w.style.top = startY + '%';
-    w.style.setProperty('--dx', dx);
-    w.style.setProperty('--dy', dy);
-    w.style.animationDelay = (i * 0.05) + 's';
-    field.appendChild(w);
-    setTimeout(() => w.remove(), 2100);
-  }
-}
-
-function update(){
-  if(!selected) return;
-  $('seedLabel').textContent = selected.name;
-  $('seedFlavor').textContent = selected.desc;
-  $('name').textContent = selected.name;
-  $('desc').textContent = selected.desc;
-  $('clockText').textContent = `${growth} / 4`;
-  $('progress').style.width = (growth * 25) + '%';
-  $('stageName').textContent = (selected.stages || ['Unplanted','First Stirring','Rooted','Awakened','Fully Matured'])[growth];
-  $('stageCaption').textContent = (selected.stageCaptions || ['Seed','First Bloom','Spreading Influence','Dark Blossom','Matured'])[growth];
-  $('result').textContent = growth === 4
-    ? selected.bloom
-    : 'Advance the clock to track effect thresholds. The fourth segment marks the Magiseed as fully matured.';
-  $('bloomBadge').textContent = growth === 4 ? 'Bloom Complete' : 'Bloom / Completion';
-  for(let i = 1; i <= 4; i++) $('seg' + i).classList.toggle('done', i <= growth);
-  $('hero').className = 'hero g' + growth;
-  $('effects').innerHTML = selected.effects.map((effect, i) => `
-    <div class="effect ${growth >= i + 1 ? 'active' : ''}">
-      <div class="num">${i + 1}</div>
-      <div>${effect}</div>
-    </div>
-  `).join('');
-}
-
-$('advance').onclick = () => {
-  if(!selected || growth >= 4) return;
-  growth++;
-  update();
-  spawnWisps(7 + growth * 3);
-  saveState();
-};
-
-$('reset').onclick = () => {
-  growth = 0;
-  update();
-  saveState();
-};
-
-$('addSeed').onclick = () => {
-  const name = $('newName').value.trim();
-  if(!name){
-    alert('Please enter a seed name.');
-    return;
-  }
-  const desc = $('newDesc').value.trim() || 'A newly added Magiseed.';
-  const effects = [
-    $('newEffect1').value.trim(),
-    $('newEffect2').value.trim(),
-    $('newEffect3').value.trim()
-  ].filter(Boolean);
-  const bloom = $('newBloom').value.trim() || 'No bloom note yet.';
-  const id = name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
-  const seed = {
-    id,
-    name,
-    desc,
-    bloom,
-    stages:['Unplanted','First Stirring','Rooted','Awakened','Fully Matured'],
-    stageCaptions:['Seed','First Bloom','Spreading Influence','Dark Blossom','Matured'],
-    effects: effects.length ? effects : ['No effects entered yet.']
-  };
-  const existingIndex = seeds.findIndex(s => s.id === id);
-  if(existingIndex >= 0) seeds[existingIndex] = seed;
-  else seeds.push(seed);
-  ['newName','newDesc','newEffect1','newEffect2','newEffect3','newBloom'].forEach(id => $(id).value = '');
-  selected = seed;
-  growth = 0;
-  renderCodex();
-  update();
-  saveState();
-};
-
-loadState();
-renderCodex();
-update();
-saveState();
+const stageImages=['assets/grave-asphodel-stage-0.svg','assets/grave-asphodel-stage-1.svg','assets/grave-asphodel-stage-2.svg','assets/grave-asphodel-stage-3.svg','assets/grave-asphodel-stage-4.svg'];
+const defaultSeeds=[{id:'grave-asphodel',name:'Grave Asphodel',desc:'Solemn and elegant, it embodies death’s ineluctability.',bloom:'At 4/4 the Grave Asphodel fully blooms from the skull, steeping the battlefield in funerary magic. Add any harvest, bloom, or GM note here later if needed.',stages:['Seed','First Stirring','Rooted','Awakened','Fully Matured'],stageCaptions:['Seed','First Bloom','Spreading Influence','Dark Blossom','Matured'],effects:['At the end of your turn, you may choose an enemy you can see. If you do, that enemy suffers <strong>shaken</strong>.','At the end of your turn, every enemy you can see suffers <strong>shaken</strong>.','At the end of your turn, you deal an amount of <strong>dark</strong> damage equal to <strong>[15 + your Skill Level in Chloromancy]</strong> to each enemy you can see who is suffering from <strong>shaken</strong>.']}];
+let seeds=[];let selected=null;let growth=0;const $=id=>document.getElementById(id);
+function loadState(){try{const saved=JSON.parse(localStorage.getItem('floralistSeeds')||'null');seeds=Array.isArray(saved)&&saved.length?saved:JSON.parse(JSON.stringify(defaultSeeds))}catch(err){seeds=JSON.parse(JSON.stringify(defaultSeeds))}const selectedId=localStorage.getItem('floralistSelected');const savedGrowth=parseInt(localStorage.getItem('floralistGrowth')||'0',10);selected=seeds.find(s=>s.id===selectedId)||seeds[0];growth=Number.isFinite(savedGrowth)?Math.max(0,Math.min(4,savedGrowth)):0}
+function saveState(){localStorage.setItem('floralistSeeds',JSON.stringify(seeds));localStorage.setItem('floralistSelected',selected?selected.id:'');localStorage.setItem('floralistGrowth',String(growth))}
+function renderCodex(){$('seedList').innerHTML=seeds.map(seed=>`<button class="seedpick ${selected&&selected.id===seed.id?'active':''}" data-id="${seed.id}"><strong>${seed.name}</strong><small>${seed.desc}</small></button>`).join('');document.querySelectorAll('.seedpick').forEach(button=>{button.onclick=()=>{selected=seeds.find(s=>s.id===button.dataset.id)||seeds[0];growth=0;renderCodex();update();saveState()}})}
+function spawnWisps(count){const field=$('wisps');for(let i=0;i<count;i++){const w=document.createElement('span');w.className='wisp';const startX=40+Math.random()*20;const startY=58+Math.random()*14;const dx=(Math.random()*180-90).toFixed(0)+'px';const dy=(-70-Math.random()*120).toFixed(0)+'px';w.style.left=startX+'%';w.style.top=startY+'%';w.style.setProperty('--dx',dx);w.style.setProperty('--dy',dy);w.style.animationDelay=(i*.05)+'s';field.appendChild(w);setTimeout(()=>w.remove(),2100)}}
+function update(){if(!selected)return;$('seedLabel').textContent=selected.name;$('seedFlavor').textContent=selected.desc;$('name').textContent=selected.name;$('desc').textContent=selected.desc;$('clockText').textContent=`${growth} / 4`;$('progress').style.width=(growth*25)+'%';$('stageName').textContent=(selected.stages||['Unplanted','First Stirring','Rooted','Awakened','Fully Matured'])[growth];$('stageCaption').textContent=(selected.stageCaptions||['Seed','First Bloom','Spreading Influence','Dark Blossom','Matured'])[growth];$('result').textContent=growth===4?selected.bloom:'Advance the clock to track effect thresholds. The fourth segment marks the Magiseed as fully matured.';$('bloomBadge').textContent=growth===4?'Bloom Complete':'Bloom / Completion';for(let i=1;i<=4;i++)$('seg'+i).classList.toggle('done',i<=growth);$('hero').className='hero g'+growth;const growthImage=$('growthImage');if(growthImage&&growthImage.getAttribute('src')!==stageImages[growth]){growthImage.classList.add('changing');setTimeout(()=>{growthImage.src=stageImages[growth];growthImage.classList.remove('changing')},120)}$('effects').innerHTML=selected.effects.map((effect,i)=>`<div class="effect ${growth>=i+1?'active':''}"><div class="num">${i+1}</div><div>${effect}</div></div>`).join('')}
+$('advance').onclick=()=>{if(!selected||growth>=4)return;growth++;update();spawnWisps(7+growth*3);saveState()};$('reset').onclick=()=>{growth=0;update();saveState()};
+$('addSeed').onclick=()=>{const name=$('newName').value.trim();if(!name){alert('Please enter a seed name.');return}const desc=$('newDesc').value.trim()||'A newly added Magiseed.';const effects=[$('newEffect1').value.trim(),$('newEffect2').value.trim(),$('newEffect3').value.trim()].filter(Boolean);const bloom=$('newBloom').value.trim()||'No bloom note yet.';const id=name.toLowerCase().replace(/[^a-z0-9]+/g,'-');const seed={id,name,desc,bloom,stages:['Unplanted','First Stirring','Rooted','Awakened','Fully Matured'],stageCaptions:['Seed','First Bloom','Spreading Influence','Dark Blossom','Matured'],effects:effects.length?effects:['No effects entered yet.']};const existingIndex=seeds.findIndex(s=>s.id===id);if(existingIndex>=0)seeds[existingIndex]=seed;else seeds.push(seed);['newName','newDesc','newEffect1','newEffect2','newEffect3','newBloom'].forEach(id=>$(id).value='');selected=seed;growth=0;renderCodex();update();saveState()};
+loadState();renderCodex();update();saveState();
 </script>
-</body>
-</html>
+</body></html>
