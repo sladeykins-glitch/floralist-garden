@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 430" role="img" aria-labelledby="t d">
+<title id="t">Floralist Garden skull planter</title><desc id="d">A cracked ivory skull wrapped in roots and moss, with a dark planting cavity in the crown and faint purple magical accents.</desc>
+<defs>
+<radialGradient id="bone" cx="38%" cy="26%" r="78%"><stop offset="0" stop-color="#efe3c7"/><stop offset=".42" stop-color="#cbb99a"/><stop offset=".78" stop-color="#8d7a62"/><stop offset="1" stop-color="#4d4034"/></radialGradient>
+<linearGradient id="bone2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dacaaa"/><stop offset="1" stop-color="#75624e"/></linearGradient>
+<radialGradient id="cavity" cx="50%" cy="48%" r="60%"><stop stop-color="#050706"/><stop offset=".72" stop-color="#11150f"/><stop offset="1" stop-color="#2b211b"/></radialGradient>
+<linearGradient id="moss" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6d7c4a"/><stop offset=".55" stop-color="#3d5132"/><stop offset="1" stop-color="#1e2a1e"/></linearGradient>
+<linearGradient id="root" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5a4333"/><stop offset=".5" stop-color="#34271f"/><stop offset="1" stop-color="#17120f"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="15" stdDeviation="10" flood-color="#000" flood-opacity=".62"/></filter>
+<filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g filter="url(#shadow)">
+<!-- roots behind skull -->
+<path d="M107 326 C45 351 54 387 18 402" fill="none" stroke="url(#root)" stroke-width="18" stroke-linecap="round"/>
+<path d="M405 315 C458 338 456 381 504 402" fill="none" stroke="url(#root)" stroke-width="16" stroke-linecap="round"/>
+<path d="M120 297 C54 298 55 330 16 342" fill="none" stroke="#2b211b" stroke-width="9" stroke-linecap="round"/>
+<path d="M398 288 C464 286 468 317 513 327" fill="none" stroke="#2b211b" stroke-width="9" stroke-linecap="round"/>
+<!-- cranium -->
+<path d="M119 200 C115 91 185 34 286 44 C380 53 425 129 399 226 C389 265 372 281 353 296 L168 298 C138 279 120 243 119 200Z" fill="url(#bone)" stroke="#5c4a39" stroke-width="6"/>
+<!-- crown break / planter rim -->
+<path d="M165 116 C189 80 230 65 282 67 C329 69 363 87 377 116 C358 139 327 151 279 151 C231 151 191 142 165 116Z" fill="#8d7a62" stroke="#5b4939" stroke-width="5"/>
+<path d="M178 111 C202 91 235 83 281 84 C320 84 344 93 362 109 C347 124 319 131 280 132 C238 131 204 125 178 111Z" fill="url(#cavity)" stroke="#241b17" stroke-width="5"/>
+<!-- temple and cheek forms -->
+<path d="M145 208 C139 253 152 291 184 320 L205 278 C192 251 192 221 197 194Z" fill="url(#bone2)" opacity=".92"/>
+<path d="M390 204 C397 250 386 288 353 319 L331 278 C345 247 344 220 338 193Z" fill="url(#bone2)" opacity=".9"/>
+<!-- eye sockets -->
+<path d="M166 220 C174 185 207 169 239 184 C261 196 263 225 246 248 C226 273 184 266 169 243 C164 236 163 228 166 220Z" fill="url(#cavity)" stroke="#5b493b" stroke-width="5"/>
+<path d="M302 185 C337 169 371 187 377 221 C381 244 359 267 329 267 C301 266 282 246 285 222 C287 207 292 195 302 185Z" fill="url(#cavity)" stroke="#5b493b" stroke-width="5"/>
+<!-- nose -->
+<path d="M266 230 C258 252 248 275 251 296 C257 306 267 308 277 298 C284 306 296 305 302 295 C303 273 293 251 285 230 C279 220 272 220 266 230Z" fill="#17120f" stroke="#5b493b" stroke-width="4"/>
+<!-- jaw -->
+<path d="M191 296 C204 334 227 356 275 365 C321 359 349 335 358 298 L334 285 C320 302 303 309 276 311 C245 308 222 302 205 285Z" fill="url(#bone2)" stroke="#5b4939" stroke-width="5"/>
+<!-- teeth -->
+<g fill="#cbb99a" stroke="#6c5946" stroke-width="2">
+<path d="M218 309 v29 q10 8 18 0 v-31Z"/><path d="M239 313 v33 q10 7 18-1 v-31Z"/><path d="M260 315 v34 q10 7 18 0 v-34Z"/><path d="M281 315 v34 q10 6 18-1 v-33Z"/><path d="M302 312 v32 q9 5 17-2 v-31Z"/>
+</g>
+<!-- cracks -->
+<g fill="none" stroke="#5d4b3a" stroke-width="3" stroke-linecap="round">
+<path d="M207 151 l-17 28 13 17-15 27"/><path d="M333 148 l15 25-11 18 14 25"/><path d="M250 151 l8 22-10 16 11 22"/><path d="M319 277 l-15 17 9 14"/><path d="M226 275 l13 14-10 16"/>
+</g>
+<!-- moss masses -->
+<g fill="url(#moss)" opacity=".96">
+<path d="M139 179 C128 142 145 113 178 94 C181 112 181 134 166 153 C157 165 152 175 151 187Z"/>
+<path d="M374 176 C391 142 381 112 354 94 C348 112 348 135 361 154 C369 166 372 176 374 184Z"/>
+<path d="M144 298 C125 311 119 333 133 349 C156 337 175 322 184 301Z"/>
+<path d="M366 297 C389 309 397 330 386 349 C360 339 345 324 334 302Z"/>
+</g>
+<!-- vines over skull -->
+<path d="M109 301 C137 267 128 219 156 185 C181 153 216 150 229 114" fill="none" stroke="url(#root)" stroke-width="11" stroke-linecap="round"/>
+<path d="M410 303 C385 266 394 223 366 190 C342 160 316 149 306 118" fill="none" stroke="url(#root)" stroke-width="10" stroke-linecap="round"/>
+<path d="M211 102 C236 120 262 121 280 105 C302 88 331 91 350 106" fill="none" stroke="#2f241d" stroke-width="7" stroke-linecap="round"/>
+<!-- purple alchemical accents -->
+<g filter="url(#glow)">
+<circle cx="151" cy="165" r="5" fill="#bb7bd0"/><circle cx="365" cy="160" r="4" fill="#b56bca"/><circle cx="132" cy="307" r="4" fill="#8f5aa8"/><circle cx="393" cy="306" r="4" fill="#8f5aa8"/>
+</g>
+<!-- tiny flowers -->
+<g fill="#9f6ab2" stroke="#d0a7db" stroke-width="1.5">
+<g transform="translate(169 126)"><ellipse rx="4" ry="10"/><ellipse rx="4" ry="10" transform="rotate(72)"/><ellipse rx="4" ry="10" transform="rotate(144)"/><ellipse rx="4" ry="10" transform="rotate(216)"/><ellipse rx="4" ry="10" transform="rotate(288)"/><circle r="3" fill="#d4b77b"/></g>
+<g transform="translate(356 133) scale(.8)"><ellipse rx="4" ry="10"/><ellipse rx="4" ry="10" transform="rotate(72)"/><ellipse rx="4" ry="10" transform="rotate(144)"/><ellipse rx="4" ry="10" transform="rotate(216)"/><ellipse rx="4" ry="10" transform="rotate(288)"/><circle r="3" fill="#d4b77b"/></g>
+</g>
+</g>
+</svg>
