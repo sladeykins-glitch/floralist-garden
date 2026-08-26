@@ -9,101 +9,15 @@
 </head>
 <body>
   <main id="dream" class="dream-shell">
-    <div class="grain"></div>
-    <div class="vignette"></div>
-
-    <section id="scene-opening" class="scene active" aria-live="polite">
-      <div class="opening-copy">
-        <p class="line line-1">You have had this dream before.</p>
-        <p class="line line-2">You don't remember when it began.</p>
-        <p class="line line-3">But lately, you remember more.</p>
-        <button id="sleepButton" class="dream-button hidden-button">Close your eyes</button>
-      </div>
-    </section>
-
-    <section id="scene-sound" class="scene">
-      <div class="void-stage interact-stage" id="voidStage">
-        <div class="pulse-ring"></div>
-        <p class="whisper top-whisper">At first, there was only the sound.</p>
-        <p class="instruction">Touch the darkness.</p>
-      </div>
-    </section>
-
-    <section id="scene-city" class="scene">
-      <div id="cityStage" class="city-stage interact-stage">
-        <div class="moon moon-one"></div>
-        <div class="moon moon-two"></div>
-        <div class="city-haze"></div>
-        <div class="city-silhouette">
-          <span class="tower t1"></span>
-          <span class="tower t2"></span>
-          <span class="tower t3"></span>
-          <span class="windmill w1"><i></i></span>
-          <span class="windmill w2"><i></i></span>
-          <span class="spire"></span>
-        </div>
-        <div id="revealLight" class="reveal-light"></div>
-        <div class="fragment-layer" id="fragmentLayer">
-          <span data-fragment="0">Towers.</span>
-          <span data-fragment="1">Windmills.</span>
-          <span data-fragment="2">Streets you somehow recognise.</span>
-          <span data-fragment="3">You have never been here.</span>
-          <span data-fragment="4" class="final-fragment">You know exactly where you are.</span>
-        </div>
-        <p class="instruction city-instruction">Move through the memory.</p>
-      </div>
-    </section>
-
-    <section id="scene-crystal" class="scene">
-      <div id="crystalStage" class="crystal-stage interact-stage">
-        <div class="crystal-wrap" id="crystal">
-          <div class="crystal-glow"></div>
-          <div class="crystal-body"></div>
-          <span class="crack c1"></span>
-          <span class="crack c2"></span>
-          <span class="crack c3"></span>
-          <span class="crack c4"></span>
-        </div>
-        <p class="instruction crystal-instruction">You always reach this part.</p>
-        <p id="crystalText" class="crystal-text">Every night you watch it die.</p>
-      </div>
-    </section>
-
-    <section id="scene-change" class="scene">
-      <div class="change-stage">
-        <p class="change-line l1">And then you wake.</p>
-        <p class="change-line l2">At least...</p>
-        <p class="change-line l3">you always did.</p>
-        <p class="change-line l4">But tonight...</p>
-        <p class="change-line l5">the dream does not end.</p>
-      </div>
-    </section>
-
-    <section id="scene-beyond" class="scene">
-      <div id="beyondStage" class="beyond-stage interact-stage">
-        <div class="dead-crystal"></div>
-        <div class="figures" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <p class="beyond-text first">There are footsteps where there were none before.</p>
-        <p class="beyond-text second">Someone is standing beside the crystal.</p>
-        <p class="beyond-text third">No.</p>
-        <p class="beyond-text fourth">Not someone.</p>
-        <p class="beyond-text fifth">Five.</p>
-        <p class="beyond-text sixth">You thought the dream belonged to you.</p>
-        <p class="beyond-text seventh">It doesn't.</p>
-        <button id="endButton" class="dream-button end-button">Wake</button>
-      </div>
-    </section>
-
-    <section id="scene-end" class="scene">
-      <div class="end-stage">
-        <p id="returnMessage" class="return-message"></p>
-        <button id="restartButton" class="dream-button subtle-button">Dream again</button>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    <div class="grain"></div><div class="vignette"></div>
+    <section id="scene-opening" class="scene active" aria-live="polite"><div class="opening-copy">
+      <p class="line line-1">You have had this dream before.</p><p class="line line-2">You don't remember when it began.</p><p class="line line-3">At first, there was almost nothing to remember.</p><p class="line line-4">But each night, something remains.</p><p class="line line-5">A sound. A shape. A place.</p><p class="line line-6">And lately, the edges have begun to sharpen.</p>
+      <button id="sleepButton" class="dream-button hidden-button">Close your eyes</button></div></section>
+    <section id="scene-sound" class="scene"><div class="void-stage interact-stage" id="voidStage"><div class="pulse-ring"></div><p class="whisper top-whisper">The sound is always the first thing you remember.</p><p class="instruction">Touch the darkness.</p></div></section>
+    <section id="scene-city" class="scene"><div id="cityStage" class="city-stage interact-stage"><div class="moon moon-one"></div><div class="moon moon-two"></div><div class="city-haze"></div><div class="city-silhouette"><span class="tower t1"></span><span class="tower t2"></span><span class="tower t3"></span><span class="windmill w1"><i></i></span><span class="windmill w2"><i></i></span><span class="spire"></span></div><div id="revealLight" class="reveal-light"></div><div class="fragment-layer" id="fragmentLayer"><span>Towers.</span><span>Windmills.</span><span>Windows glowing through the mist.</span><span>Streets you somehow recognise.</span><span>A corner you remember turning.</span><span class="final-fragment">A city becoming clearer every night.</span></div><p class="instruction city-instruction">Move through the memory.</p></div></section>
+    <section id="scene-crystal" class="scene"><div id="crystalStage" class="crystal-stage interact-stage"><div class="crystal-wrap" id="crystal"><div class="crystal-glow"></div><div class="crystal-body"></div><span class="crack c1"></span><span class="crack c2"></span><span class="crack c3"></span><span class="crack c4"></span></div><p class="instruction crystal-instruction">This part is clearer than it used to be.</p><p id="crystalText" class="crystal-text">Every night, you remember a little more of how it breaks.</p></div></section>
+    <section id="scene-change" class="scene"><div class="change-stage"><p class="change-line l1">There was a time when the dream ended here.</p><p class="change-line l2">Or perhaps...</p><p class="change-line l3">this is simply all you could remember.</p><p class="change-line l4">Lately, more has begun to remain.</p><p class="change-line l5">Shapes beyond the dark.</p><p class="change-line l6">Details that were not there before.</p><p class="change-line l7">Or details you were not yet able to see.</p></div></section>
+    <section id="scene-beyond" class="scene"><div id="beyondStage" class="beyond-stage interact-stage"><div class="dead-crystal"></div><div class="figures" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><p class="beyond-text first">There is movement beyond the crystal.</p><p class="beyond-text second">You used to mistake it for shadow.</p><p class="beyond-text third">Now you can hear footsteps.</p><p class="beyond-text fourth">Now you can make out a shape.</p><p class="beyond-text fifth">Then another.</p><p class="beyond-text sixth">Five figures, where once there was only darkness.</p><p class="beyond-text seventh">You cannot see their faces.</p><p class="beyond-text eighth">Not yet.</p><p class="beyond-text ninth">But each night, they seem a little closer.</p><button id="endButton" class="dream-button end-button">Wake</button></div></section>
+    <section id="scene-end" class="scene"><div class="end-stage"><p id="returnMessage" class="return-message"></p><button id="restartButton" class="dream-button subtle-button">Dream again</button></div></section>
+  </main><script src="script.js"></script>
+</body></html>
