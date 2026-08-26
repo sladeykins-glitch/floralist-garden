@@ -3,94 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#789565">
+<meta name="theme-color" content="#17231a">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>Floralist's Garden</title>
+<title>The Floralist's Garden</title>
 <style>
-:root{--ink:#29352b;--cream:#f7f1df;--leaf:#536d4d;--gold:#c59a4a}
+:root{--deep:#132019;--deep2:#1d2d21;--moss:#456246;--sage:#7f9b72;--cream:#f4eed9;--paper:#ebe1c5;--gold:#c8a45c;--soil:#5b3e2c;--ink:#243126}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;color:var(--ink)}
-body{background:linear-gradient(#b9d7bb 0 28%,#789d70 28% 100%);overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.1;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:20px 20px}
-header{text-align:center;padding:calc(14px + env(safe-area-inset-top)) 14px 8px}
-h1{font-size:clamp(1.45rem,7vw,2.5rem);letter-spacing:.07em;margin:0;text-shadow:0 2px #fff6}
-.subtitle{font-size:.85rem;font-style:italic;opacity:.75;margin-top:3px}
-.app{width:min(700px,100%);margin:auto;padding:0 10px calc(14px + env(safe-area-inset-bottom))}
-.garden{height:min(76vh,620px);min-height:500px;position:relative;overflow:hidden;border:2px solid #8b7a55;border-radius:22px;background:linear-gradient(#cfe4c7 0 39%,#88a86d 39%);box-shadow:0 10px 30px #263a2a44}
-.garden:before{content:"";position:absolute;left:-10%;right:-10%;bottom:-16%;height:53%;background:radial-gradient(ellipse,#8a6647 0 45%,#684a35 46% 100%);border-radius:50% 50% 0 0}
-.moon{position:absolute;width:82px;height:82px;border-radius:50%;right:7%;top:7%;background:#fff3bc;box-shadow:0 0 35px #fff3bcaa}
-.label{position:absolute;top:12px;left:14px;right:14px;text-align:center;font-size:.82rem;opacity:.65;z-index:5}
-.plant{position:absolute;left:50%;bottom:22%;transform:translateX(-50%) scale(.55);font-size:7rem;z-index:4;transform-origin:bottom;filter:drop-shadow(0 7px 5px #2e392944);transition:.4s}
-.stage-0{transform:translateX(-50%) scale(.32)}.stage-1{transform:translateX(-50%) scale(.55)}
-.stage-2{transform:translateX(-50%) scale(.78)}.stage-3{transform:translateX(-50%) scale(1)}
-.clock{position:absolute;left:50%;top:48%;width:min(78vw,390px);height:min(78vw,390px);transform:translate(-50%,-50%);border-radius:50%;z-index:2}
-.segment{position:absolute;inset:0;border-radius:50%;clip-path:polygon(50% 50%,0 0,50% 0);background:#e7d9b6cc;border:3px solid #796a4e;opacity:.5;transition:.35s}
-.segment:nth-child(1){transform:rotate(0)}.segment:nth-child(2){transform:rotate(90deg)}.segment:nth-child(3){transform:rotate(180deg)}.segment:nth-child(4){transform:rotate(270deg)}
-.segment.done{background:#a9c786dd;opacity:.95}
-.clock:after{content:"";position:absolute;inset:14px;border-radius:50%;border:2px dashed #756547aa}
-.clock-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#f7f1dfed;border:3px solid #8b7a55;font-weight:bold;z-index:4}
-.soil{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);width:220px;height:60px;border-radius:50%;background:radial-gradient(ellipse,#493322,#7b573a);z-index:3;box-shadow:inset 0 10px 20px #3e2b20}
-.sparkles span{position:absolute;z-index:5;font-size:1.2rem;animation:float 2.4s ease-in-out infinite;opacity:0}
-@keyframes float{0%{transform:translateY(15px) scale(.5);opacity:0}40%{opacity:1}100%{transform:translateY(-45px) scale(1.2);opacity:0}}
-.controls{position:absolute;left:10px;right:10px;bottom:12px;z-index:8;display:flex;gap:8px}
-button{font:inherit}
-.action{flex:1;border:0;border-radius:14px;padding:15px 10px;font-weight:bold;font-size:1rem;min-height:52px;background:var(--leaf);color:white;box-shadow:0 4px 0 #394b35;touch-action:manipulation}
-.action.secondary{background:#8b7a55;box-shadow:0 4px 0 #645638}
-.action:active{transform:translateY(3px);box-shadow:0 1px 0 #394b35}
-.bottom{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:rgba(247,241,223,.94);border:2px solid #8b7a55;border-radius:17px;padding:13px;box-shadow:0 6px 20px #263a2a33}
-.card h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin:0 0 7px}
-.seed-button{width:100%;text-align:left;border:1px solid #a9956d;background:#fff9e9;padding:10px;border-radius:11px;margin:3px 0;min-height:45px;touch-action:manipulation;color:inherit}
-.seed-button.active{background:#e8efd9;border:2px solid var(--leaf)}
-.seed-button strong{display:block}.seed-button small{display:block;opacity:.65;font-size:.72rem;margin-top:2px}
-.progress{height:9px;border-radius:99px;background:#d8ccb0;overflow:hidden;margin:9px 0}
-.progress i{display:block;height:100%;width:0;background:#789565;transition:.4s}
-.result{font-size:.84rem;line-height:1.35}
-@media(max-width:430px){
- .garden{height:70vh;min-height:480px;border-radius:18px}
- .bottom{grid-template-columns:1fr}
- .bottom .card:first-child{order:1}.bottom .card:last-child{order:2}
- .plant{font-size:6rem}
- .soil{width:190px}
-}
+html{scroll-behavior:smooth} body{margin:0;min-height:100vh;font-family:Georgia,"Times New Roman",serif;color:var(--cream);background:radial-gradient(circle at 50% 5%,#344d39 0,#1d3023 28%,#111b15 78%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:radial-gradient(circle,#d8e7c9 0 1px,transparent 1.5px);background-size:38px 38px}
+header{text-align:center;padding:calc(20px + env(safe-area-inset-top)) 16px 14px;position:relative;z-index:2} h1{margin:0;font-size:clamp(1.75rem,7vw,3.2rem);letter-spacing:.1em;font-weight:normal;text-shadow:0 2px 15px #000} .subtitle{margin-top:5px;color:#cfdbc4;font-style:italic;font-size:.9rem}
+.app{width:min(820px,100%);margin:auto;padding:0 10px calc(22px + env(safe-area-inset-bottom));position:relative;z-index:1}
+.garden{height:min(72vh,640px);min-height:500px;position:relative;overflow:hidden;border:1px solid #a88c55;border-radius:26px;background:linear-gradient(180deg,#344b3a 0 10%,#69846b 45%,#667950 62%,#3b4b31 100%);box-shadow:0 22px 55px #0008,inset 0 0 70px #fff1}
+.garden:after{content:"";position:absolute;left:-12%;right:-12%;bottom:-14%;height:48%;border-radius:50% 50% 0 0;background:radial-gradient(ellipse at 50% 18%,#8b6546 0 26%,#65462f 45%,#3c2a20 76%);box-shadow:inset 0 18px 30px #24170f88}
+.sun{position:absolute;width:110px;height:110px;border-radius:50%;top:7%;right:8%;background:radial-gradient(circle,#fff8d5 0 42%,#f2d68c 55%,#f2d68c00 72%);filter:blur(.2px);opacity:.8}
+.vine{position:absolute;top:-15px;font-size:3rem;opacity:.75;filter:drop-shadow(0 4px 4px #0005);z-index:1}.vine.v1{left:-5px;transform:rotate(14deg)}.vine.v2{right:-8px;transform:scaleX(-1) rotate(8deg)}
+.garden-title{position:absolute;z-index:6;top:13px;left:14px;right:14px;text-align:center;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:#edf3e7cc}
+.clock{position:absolute;left:50%;top:47%;width:min(77vw,405px);height:min(77vw,405px);transform:translate(-50%,-50%);border-radius:50%;z-index:2;filter:drop-shadow(0 7px 10px #0006)}
+.segment{position:absolute;inset:0;border-radius:50%;clip-path:polygon(50% 50%,0 0,50% 0);background:#dbd1af42;border:2px solid #d0b77a88;opacity:.7;transition:.45s ease}.segment:nth-child(1){transform:rotate(0)}.segment:nth-child(2){transform:rotate(90deg)}.segment:nth-child(3){transform:rotate(180deg)}.segment:nth-child(4){transform:rotate(270deg)}.segment.done{background:#bad58dbd;border-color:#f0d79b;box-shadow:0 0 35px #ccf29d88 inset}
+.clock:before{content:"✧   ❦   ✧   ❦";position:absolute;inset:-21px;border:1px solid #d7bd7866;border-radius:50%;color:#f0d79b99;font-size:1rem;letter-spacing:1.5rem;display:flex;align-items:flex-start;justify-content:center;padding-top:8px}.clock:after{content:"";position:absolute;inset:15px;border:1px dashed #f0d79b88;border-radius:50%}
+.clock-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#f5eed8,#d7c99f);border:3px double #856d3e;color:#33432f;font-size:1.08rem;font-weight:bold;box-shadow:0 0 18px #0005}
+.soil{position:absolute;z-index:3;left:50%;bottom:10%;transform:translateX(-50%);width:235px;height:66px;border-radius:50%;background:radial-gradient(ellipse,#312018,#735038 55%,#3e2a20 100%);box-shadow:inset 0 9px 17px #1e130d,0 12px 20px #0005}
+.plant-wrap{position:absolute;z-index:5;left:50%;bottom:19%;transform:translateX(-50%);width:230px;height:250px;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}.plant-img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 9px 8px #0007);transition:.5s ease}.plant-emoji{font-size:7rem;line-height:1;filter:drop-shadow(0 9px 6px #0007);transform-origin:bottom;transition:.5s ease}.stage-0{transform:scale(.35)}.stage-1{transform:scale(.58)}.stage-2{transform:scale(.8)}.stage-3,.stage-4{transform:scale(1)}
+.sparkles span{position:absolute;z-index:7;font-size:1.1rem;animation:float 2.5s ease-in-out infinite;opacity:0;color:#fff2a9}@keyframes float{0%{transform:translateY(18px) scale(.4);opacity:0}35%{opacity:1}100%{transform:translateY(-70px) scale(1.2);opacity:0}}
+.controls{position:absolute;z-index:9;bottom:13px;left:11px;right:11px;display:flex;gap:9px}.btn{border:0;border-radius:15px;min-height:53px;padding:13px 14px;font:inherit;font-weight:bold;cursor:pointer;touch-action:manipulation;transition:.15s}.btn.primary{flex:2;background:linear-gradient(#678662,#486448);color:white;box-shadow:0 4px 0 #2e432f}.btn.secondary{flex:1;background:linear-gradient(#a78c61,#7f6847);color:white;box-shadow:0 4px 0 #594832}.btn:active{transform:translateY(3px);box-shadow:none}
+.section{margin-top:12px;background:linear-gradient(145deg,#f5eedc,#dfd2b2);color:var(--ink);border:1px solid #a58a55;border-radius:20px;padding:15px;box-shadow:0 12px 28px #0004}.section h2{margin:0 0 10px;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;color:#3f533f}.seed-card{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:center;background:#fffaf0;border:1px solid #c8b58b;border-radius:15px;padding:10px}.art-slot{height:88px;border-radius:12px;border:1px dashed #95805b;background:linear-gradient(145deg,#e6dfc8,#f8f3e7);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#77674f;text-align:center;font-size:.72rem;position:relative}.art-slot img{width:100%;height:100%;object-fit:cover}.seed-name{font-size:1.25rem;margin:0 0 4px}.seed-desc{font-size:.87rem;line-height:1.4;color:#4d5d4d}.meta{margin-top:8px;font-size:.78rem;color:#687268}.progress{height:9px;border-radius:99px;background:#cfc3a5;overflow:hidden;margin:9px 0}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6f9162,#b1cb7d);transition:.4s}.result{margin-top:8px;padding:10px;border-radius:11px;background:#e8eedb;border-left:3px solid #718c58;font-size:.84rem;line-height:1.4}
+.library{display:grid;gap:9px}.library-item{border:1px solid #b7a47d;background:#fffaf0;border-radius:13px;padding:10px;display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center}.library-thumb{width:58px;height:58px;border-radius:10px;overflow:hidden;background:#e8dfc7;display:grid;place-items:center;font-size:1.8rem}.library-thumb img{width:100%;height:100%;object-fit:cover}.library-item button{border:0;background:#536d4d;color:white;border-radius:10px;padding:9px 11px;font:inherit;cursor:pointer}.form-grid{display:grid;gap:8px}.form-grid input,.form-grid textarea{width:100%;border:1px solid #b9a782;border-radius:10px;padding:10px;font:inherit;background:#fffcf4;color:#2a342a}.form-grid textarea{min-height:85px;resize:vertical}.form-actions{display:flex;gap:8px}.small-btn{border:0;border-radius:10px;padding:10px 12px;font:inherit;font-weight:bold;cursor:pointer;background:#536d4d;color:#fff}.small-btn.alt{background:#8c7752}.upload-label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#8c7752;color:white;border-radius:10px;padding:9px 11px;font-size:.8rem}.upload-label input{display:none}.note{font-size:.76rem;line-height:1.4;color:#667066;margin-top:8px}.empty{font-style:italic;color:#788078;font-size:.85rem}.divider{height:1px;background:#cdbd97;margin:12px 0}
+@media(min-width:700px){.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.section{padding:18px}.garden{min-height:590px}.plant-wrap{width:270px;height:290px}}
+@media(max-width:430px){header{padding-bottom:9px}.garden{height:69vh;min-height:485px;border-radius:20px}.clock{width:min(82vw,350px);height:min(82vw,350px)}.plant-wrap{bottom:20%;height:210px}.plant-emoji{font-size:6rem}.seed-card{grid-template-columns:76px 1fr}.art-slot{height:76px}.library-item{grid-template-columns:54px 1fr}.library-item button{grid-column:2}.controls .btn{font-size:.9rem}}
 </style>
 </head>
 <body>
-<header><h1>THE FLORALIST'S GARDEN</h1><div class="subtitle">A quiet place where Magiseeds awaken.</div></header>
+<header><h1>THE FLORALIST'S GARDEN</h1><div class="subtitle">Where a Magiseed is tended, time itself learns to bloom.</div></header>
 <main class="app">
 <section class="garden">
-<div class="label" id="seedLabel">Choose a Magiseed below</div><div class="moon"></div>
+<div class="garden-title" id="gardenTitle">THE MAGISEED BED</div><div class="sun"></div><div class="vine v1">🌿</div><div class="vine v2">🌿</div>
 <div class="clock"><div class="segment" id="seg1"></div><div class="segment" id="seg2"></div><div class="segment" id="seg3"></div><div class="segment" id="seg4"></div><div class="clock-center" id="clockText">0 / 4</div></div>
-<div class="soil"></div><div class="sparkles" id="sparkles"></div><div class="plant stage-0" id="plant">🌰</div>
-<div class="controls"><button class="action" id="advance">Advance Clock</button><button class="action secondary" id="reset">Reset</button></div>
+<div class="soil"></div><div class="sparkles" id="sparkles"></div><div class="plant-wrap" id="plantWrap"><div class="plant-emoji stage-0" id="plantEmoji">🌰</div></div>
+<div class="controls"><button class="btn primary" id="advance">Advance Clock</button><button class="btn secondary" id="reset">Reset</button></div>
 </section>
-<section class="bottom">
-<div class="card"><h2>Magiseeds</h2><div id="seedList"></div></div>
-<div class="card"><h2 id="name">Choose a seed</h2><div id="desc" class="result">Select a Magiseed to plant it in the garden.</div><div class="progress"><i id="progress"></i></div><div class="result"><strong>Growth:</strong> <span id="stageName">Unplanted</span></div><div class="result" id="result" style="margin-top:7px">Your Magiseed will grow here.</div></div>
-</section>
+
+<section class="section" id="currentSeed"><h2>Current Magiseed</h2><div class="seed-card"><div class="art-slot" id="currentArt"><span>Seed artwork<br>goes here</span></div><div><div class="seed-name" id="currentName">Unnamed Magiseed</div><div class="seed-desc" id="currentDesc">Add the name and description of your first Magiseed in the Seed Codex below.</div><div class="progress"><i id="progress"></i></div><div class="meta"><strong>Growth:</strong> <span id="stageName">Seed</span></div><div class="result" id="currentResult">Advance the four-part clock as the Magiseed grows.</div></div></div></section>
+
+<div class="two-col">
+<section class="section"><h2>Seed Codex</h2><div id="library" class="library"></div><div class="note">Tap <strong>Plant</strong> to move a seed into the garden. Seeds added here are stored on this device.</div></section>
+<section class="section"><h2>Add a Magiseed</h2><div class="form-grid"><input id="seedName" placeholder="Seed name"><textarea id="seedDesc" placeholder="Short description / appearance"></textarea><textarea id="seedRules" placeholder="Rules, effect, or what happens while it grows"></textarea><textarea id="seedBloom" placeholder="What happens when the clock is complete"></textarea><label class="upload-label">🖼 Choose seed artwork<input id="seedImage" type="file" accept="image/*"></label><div id="imageName" class="note">No artwork chosen yet.</div><div class="form-actions"><button class="small-btn" id="addSeed">Add to Codex</button><button class="small-btn alt" id="clearForm">Clear</button></div></div><div class="note">Image uploads are kept in this browser for now. For permanent shared artwork, send me the images and I can add them to the GitHub site itself.</div></section>
+</div>
 </main>
 <script>
-const seeds=[
-{id:"sun",icon:"🌻",name:"Sunbloom Seed",desc:"A warm golden seed that drinks in sunlight and blooms with radiant energy.",stages:["🌰","🌱","🌿","🌻"],result:"A brilliant Sunbloom opens, filling the garden with warm golden light."},
-{id:"moon",icon:"🌙",name:"Moonpetal Seed",desc:"A pale seed that seems to contain a tiny night sky.",stages:["🌰","🌱","🌿","🌙"],result:"A Moonpetal unfolds, its petals shimmering like a quiet midnight sky."},
-{id:"ember",icon:"🔥",name:"Emberroot Seed",desc:"A dark seed with a faint red glow beneath its shell.",stages:["🌰","🌱","🌿","🔥"],result:"Emberroot blossoms with a living flame that dances without consuming the plant."},
-{id:"mystic",icon:"✨",name:"Starveil Seed",desc:"A strange seed scattered with tiny points of impossible light.",stages:["🌰","🌱","🌿","✨"],result:"Starveil blooms into a constellation of magical flowers."}
-];
-let selected=null,growth=0;
-const $=x=>document.getElementById(x);
-function renderSeeds(){$("seedList").innerHTML=seeds.map(s=>`<button class="seed-button ${selected?.id===s.id?"active":""}" data-id="${s.id}"><strong>${s.icon} ${s.name}</strong><small>${s.desc}</small></button>`).join("");document.querySelectorAll(".seed-button").forEach(b=>b.onclick=()=>selectSeed(b.dataset.id))}
-function selectSeed(id){selected=seeds.find(s=>s.id===id);growth=0;renderSeeds();update()}
-function update(){
- if(!selected)return;
- $("seedLabel").textContent=selected.name;$("name").textContent=selected.name;$("desc").textContent=selected.desc;
- $("clockText").textContent=`${growth} / 4`;$("progress").style.width=growth*25+"%";
- $("stageName").textContent=["Seed","Sprout","Growing","Blooming","Fully Grown"][growth];
- $("plant").textContent=selected.stages[growth];$("plant").className="plant stage-"+Math.min(growth,3);
- $("result").textContent=growth===4?selected.result:"Advance the clock to grow the Magiseed.";
- for(let i=1;i<=4;i++)$("seg"+i).classList.toggle("done",i<=growth);
- $("sparkles").innerHTML=growth>=2?Array.from({length:growth*2},(_,i)=>`<span style="left:${20+Math.random()*60}%;top:${25+Math.random()*45}%;animation-delay:${i*.25}s">✦</span>`).join(""):"";
-}
-$("advance").onclick=()=>{if(selected&&growth<4){growth++;update()}};$("reset").onclick=()=>{growth=0;update()};renderSeeds();
+const DEFAULT_SEEDS=[{id:"first-seed",name:"Unnamed Magiseed",desc:"Add the description of your first Magiseed here.",rules:"Add its growth rules or magical effect here.",bloom:"Describe what happens when its four-segment clock is complete.",image:"",emoji:"🌱"}];
+let seeds=JSON.parse(localStorage.getItem("floralistSeeds")||"null")||DEFAULT_SEEDS;
+let selectedId=localStorage.getItem("floralistSelected")||seeds[0].id;
+let growth=Number(localStorage.getItem("floralistGrowth")||0); let pendingImage="";
+const $=id=>document.getElementById(id); const selected=()=>seeds.find(s=>s.id===selectedId)||seeds[0];
+function save(){localStorage.setItem("floralistSeeds",JSON.stringify(seeds));localStorage.setItem("floralistSelected",selectedId);localStorage.setItem("floralistGrowth",growth)}
+function renderPlant(){const s=selected();const wrap=$("plantWrap");wrap.innerHTML="";if(s.image){const img=document.createElement("img");img.src=s.image;img.className="plant-img stage-"+growth;wrap.appendChild(img)}else{const d=document.createElement("div");d.className="plant-emoji stage-"+growth;d.textContent=growth===0?"🌰":growth===1?"🌱":growth===2?"🌿":growth===3?"🌷":(s.emoji||"🌸");wrap.appendChild(d)}}
+function update(){const s=selected(); if(!s)return; $("gardenTitle").textContent=s.name;$("clockText").textContent=growth+" / 4";$("progress").style.width=(growth*25)+"%";$("stageName").textContent=["Seed","Sprout","Growing","Blooming","Fully Grown"][growth];$("currentName").textContent=s.name;$("currentDesc").textContent=s.desc||"No description yet.";$("currentResult").textContent=growth===4?(s.bloom||"The Magiseed has fully bloomed."):(s.rules||"Advance the four-part clock as the Magiseed grows.");$("currentArt").innerHTML=s.image?`<img src="${s.image}" alt="${s.name} artwork">`:'<span>Seed artwork<br>goes here</span>';for(let i=1;i<=4;i++)$("seg"+i).classList.toggle("done",i<=growth);$("sparkles").innerHTML=growth>=2?Array.from({length:growth*3},(_,i)=>`<span style="left:${18+Math.random()*65}%;top:${25+Math.random()*48}%;animation-delay:${i*.18}s">✦</span>`).join(""):"";renderPlant();renderLibrary();save()}
+function renderLibrary(){const lib=$("library");lib.innerHTML=seeds.length?seeds.map(s=>`<div class="library-item"><div class="library-thumb">${s.image?`<img src="${s.image}" alt="">`:s.emoji||"🌱"}</div><div><strong>${escapeHtml(s.name)}</strong><div class="seed-desc">${escapeHtml(s.desc||"No description yet.")}</div></div><button data-plant="${s.id}">${s.id===selectedId?'Planted':'Plant'}</button></div>`).join(""):'<div class="empty">No Magiseeds in the codex yet.</div>';document.querySelectorAll("[data-plant]").forEach(b=>b.onclick=()=>{selectedId=b.dataset.plant;growth=0;update()})}
+function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+$("advance").onclick=()=>{if(growth<4){growth++;update()}};$("reset").onclick=()=>{growth=0;update()};
+$("seedImage").onchange=e=>{const f=e.target.files[0];if(!f){pendingImage="";return}$("imageName").textContent=f.name;const reader=new FileReader();reader.onload=()=>pendingImage=reader.result;reader.readAsDataURL(f)};
+$("addSeed").onclick=()=>{const name=$("seedName").value.trim();if(!name){alert("Give the Magiseed a name first.");return}const s={id:"seed-"+Date.now(),name,desc:$("seedDesc").value.trim(),rules:$("seedRules").value.trim(),bloom:$("seedBloom").value.trim(),image:pendingImage,emoji:"🌱"};seeds.push(s);selectedId=s.id;growth=0;clearForm();update()};
+function clearForm(){["seedName","seedDesc","seedRules","seedBloom"].forEach(id=>$(id).value="");$("seedImage").value="";pendingImage="";$("imageName").textContent="No artwork chosen yet."}$("clearForm").onclick=clearForm;update();
 </script>
-</body></html>
+</body>
+</html>
